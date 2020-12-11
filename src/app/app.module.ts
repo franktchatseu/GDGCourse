@@ -13,6 +13,7 @@ import { CourseLatestComponent } from './components/course/course-latest/course-
 import { HeaderComponent } from './components/header/header.component';
 import { CourseDetailComponent } from './components/course/course-detail/course-detail.component';
 import { AboutComponent } from './components/about/about.component';
+import { FormationViewComponent } from './components/formation/formation-view/formation-view.component';
 
 @NgModule({
   declarations: [
@@ -26,13 +27,14 @@ import { AboutComponent } from './components/about/about.component';
     CourseLatestComponent,
     HeaderComponent,
     CourseDetailComponent,
-    AboutComponent
+    AboutComponent,
+    FormationViewComponent
   ],
   imports: [
     BrowserModule,
     AppRoutingModule
   ],
   providers: [],
-  bootstrap: [AppComponent,AcceuilComponent,CourseListComponent],
+  bootstrap: [AppComponent,AcceuilComponent,CourseListComponent,FormationViewComponent],
 })
 export class AppModule { }
