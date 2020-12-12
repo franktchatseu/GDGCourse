@@ -14,6 +14,8 @@ import { HeaderComponent } from './components/header/header.component';
 import { CourseDetailComponent } from './components/course/course-detail/course-detail.component';
 import { AboutComponent } from './components/about/about.component';
 import { FormationViewComponent } from './components/formation/formation-view/formation-view.component';
+import { HttpClientModule} from '@angular/common/http';
+import { CourseService } from './services/course.service';
 
 @NgModule({
   declarations: [
@@ -32,9 +34,10 @@ import { FormationViewComponent } from './components/formation/formation-view/fo
   ],
   imports: [
     BrowserModule,
-    AppRoutingModule
+    AppRoutingModule,
+    HttpClientModule
   ],
-  providers: [],
+  providers: [CourseService],
   bootstrap: [AppComponent,AcceuilComponent,CourseListComponent,FormationViewComponent],
 })
 export class AppModule { }
