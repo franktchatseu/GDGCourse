@@ -37,6 +37,7 @@
               "src/assets/css/swiper.css",
               "src/assets/css/swiper.min.css",
               "src/assets/css/themify-icons.css"
+
             ],
             "scripts": [
               "src/assets/js/custom.js",
@@ -44,7 +45,10 @@
               "src/assets/js/jquery.js",
               "src/assets/js/masonry.pkgd.min.js",
               "src/assets/js/swiper.js",
-              "src/assets/js/swiper.min.js"
+              "src/assets/js/swiper.min.js",
+              "src/assets/custom.js",
+
+              "src/assets/admin/js/main.js"
             ]
           },
           "configurations": {

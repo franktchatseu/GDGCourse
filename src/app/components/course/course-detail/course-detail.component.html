@@ -1,19 +1,7 @@
 <div class="single-blog-post">
     <app-header headerTitle="Course Title"></app-header>
     <div class="container">
-        <div class="row">
-            <div class="col-12 offset-lg-1 col-lg-10">
-                <div class="featured-image">
-                    <img src="assets/images/single-post.jpg" alt="">
-
-                    <div class="posted-date position-absolute">
-                        <div class="day">23</div>
-                        <div class="month">mar</div>
-                    </div><!-- .posted-date -->
-                </div><!-- .featured-image -->
-            </div><!-- .col -->
-        </div><!-- .row -->
-
+        
         <div class="row">
             <div class="col-12 offset-lg-1 col-lg-1">
                 <div class="post-share">
@@ -74,9 +62,8 @@
 
                 <div class="tags-links mt-4">
                     <ul class="d-flex flex-wrap align-items-center p-0 m-0">
-                        <li><a href="#">Multipopuse</a></li>
-                        <li><a href="#">Design</a></li>
-                        <li><a href="#">Ideas</a></li>
+                        <li *ngFor="let tag of tags"><a href="#">{{tag.title}}</a></li>
+                        
                     </ul>
                 </div><!-- .tags-links -->
 
@@ -88,52 +75,25 @@
                     </header><!-- .entry-heading -->
 
                     <div class="row mx-m-25">
-                        <div class="col-12 col-lg-6 px-25">
+                        <div class="col-12 col-lg-6 px-25" *ngFor="let course of relatedCourses">
                             <div class="blog-post-content">
                                 <figure class="blog-post-thumbnail position-relative m-0">
-                                    <a href="#"><img src="assets/images/b-5.jpg" alt=""></a>
+                                    <a href="#"><img [src]="course.image" alt="image de couverture de article"></a>
 
                                     <div class="posted-date position-absolute">
-                                        <div class="day">23</div>
-                                        <div class="month">mar</div>
+                                        <div class="day">{{course.date | date:'dd'}}</div>
+                                        <div class="month">{{course.date | date:'MMM'}}</div>
                                     </div>
                                 </figure><!-- .blog-post-thumbnail -->
 
                                 <div class="blog-post-content-wrap">
                                     <header class="entry-header">
-                                        <h2 class="entry-title"><a href="#">Which investment project should my company
-                                                choose?</a></h2>
+                                        <h2 class="entry-title"><a href="#">{{course.title}}</a></h2>
 
                                         <div class="entry-meta flex flex-wrap align-items-center">
-                                            <div class="post-author"><a href="#">Ms. Lara Croft </a></div>
+                                            <div class="post-author"><a href="#">{{course.author}}</a></div>
 
-                                            <div class="post-comments"><a href="#">02 Comments</a></div>
-                                        </div><!-- .entry-meta -->
-                                    </header><!-- .entry-header -->
-                                </div><!-- .blog-post-content-wrap -->
-                            </div><!-- .blog-post-content -->
-                        </div><!-- .col -->
-
-                        <div class="col-12 col-lg-6 px-25">
-                            <div class="blog-post-content">
-                                <figure class="blog-post-thumbnail position-relative m-0">
-                                    <a href="#"><img src="assets/images/b-6.jpg" alt=""></a>
-
-                                    <div class="posted-date position-absolute">
-                                        <div class="day">23</div>
-                                        <div class="month">mar</div>
-                                    </div>
-                                </figure><!-- .blog-post-thumbnail -->
-
-                                <div class="blog-post-content-wrap">
-                                    <header class="entry-header">
-                                        <h2 class="entry-title"><a href="#">Which investment project should my company
-                                                choose?</a></h2>
-
-                                        <div class="entry-meta flex flex-wrap align-items-center">
-                                            <div class="post-author"><a href="#">Ms. Lara Croft </a></div>
-
-                                            <div class="post-comments"><a href="#">02 Comments</a></div>
+                                            
                                         </div><!-- .entry-meta -->
                                     </header><!-- .entry-header -->
                                 </div><!-- .blog-post-content-wrap -->

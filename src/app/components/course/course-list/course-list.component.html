@@ -15,16 +15,16 @@
         <div class="row">
             <div class="col-12 col-lg-8">
                 <div class="featured-courses courses-wrap">
-                    <div class="row mx-m-25">
+                    <div class="row mx-m-25" *ngIf="courses">
                         <div class="col-12 col-md-6 px-25" *ngFor="let course of courses">
                             <div class="course-content">
                                 <figure class="course-thumbnail">
-                                    <a [routerLink]="['/course-content']"><img [src]="course.image" alt=""></a>
+                                    <a [routerLink]="['/course-content']"><img src="{{course.image}}" alt=""></a>
                                 </figure><!-- .course-thumbnail -->
 
                                 <div class="course-content-wrap">
                                     <header class="entry-header">
-                                        <h2 class="entry-title"><a href="#">{{course.title}}</a>
+                                        <h2 class="entry-title"><a href="#"><div [innerHTML]="course.title"></div></a>
                                         </h2>
 
                                         <div class="entry-meta flex flex-wrap align-items-center">
@@ -51,6 +51,7 @@
                             </div><!-- .course-content -->
                         </div><!-- .col -->
                     </div><!-- .row -->
+                    <div *ngIf="!courses"><p>Aucun Article pour cette Categorie</p></div>
                 </div><!-- .featured-courses -->
 
                 <div class="pagination flex flex-wrap justify-content-between align-items-center">
@@ -94,7 +95,7 @@
                         <h2>Categories</h2>
 
                         <ul class="p-0 m-0">
-                            <li *ngFor="let category of categories"><a href="#">{{category.title}}</a></li>
+                            <li class="a-cat" (click)="getArticlesByCategories(category.id)"  *ngFor="let category of categories"><a >{{category.title}}</a></li>
                     
                         </ul>
                     </div><!-- .cat-links -->
@@ -123,12 +124,7 @@
                         <h2>Popular Tags</h2>
 
                         <ul class="flex flex-wrap align-items-center p-0 m-0">
-                            <li><a href="#">Creative</a></li>
-                            <li><a href="#">Unique</a></li>
-                            <li><a href="#">Photography</a></li>
-                            <li><a href="#">ideas</a></li>
-                            <li><a href="#">Wordpress Template</a></li>
-                            <li><a href="#">startup</a></li>
+                            <li><a href="#" *ngFor="let tag of tags">{{tag.title}}</a></li>
                         </ul>
                     </div><!-- .popular-tags -->
                 </div><!-- .sidebar -->

@@ -32,5 +32,36 @@ export class CourseService {
     return this.http.delete(`${Routes.BLOG}/${id}`).toPromise();
   
   }
+
+  //recuperation des articles par categorie
+  articleByCategory(category_id: number): Promise<any> {
+    const url = Routes.BLOG+'category'
+    return this.http.get<any>(`${url}/${category_id}`).toPromise();
+  }
+  
+  allCategory(){
+    return this.http.get<any>(Routes.CATEGORY).toPromise();
+  
+  }
+
+  //recuperation de tous les tags articles // like html, css phyton, ...
+  getAllTag(): Promise<any> {
+    return this.http.get<any>(Routes.TAG).toPromise();
+  }
+  //reuperation de la liste des courses ar tag
+  getTagsByCourse(article_id): Promise<any> {
+    const url = Routes.TAG+'article'
+    return this.http.get<any>(`${url}/${article_id}`).toPromise();
+  }
+  //recuperation de tous les commentaires articles
+  getCommentArticle(article_id){
+    return this.http.get<any>(`${Routes.BLOG}/${article_id}`).toPromise();
+  }
+
+  //recuperatio de tous kes reponses articles
+  allResponse(commentaire_id){
+    return this.http.get<any>(`${Routes.BLOG}/${commentaire_id}`).toPromise();
+  }
+  //recuperation de 
 }
 

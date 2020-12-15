@@ -3,6 +3,8 @@ import { NgModule } from '@angular/core';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
+import { CourseService } from './services/course.service';
+import { UserService } from './services/user.service';
 import { AcceuilComponent } from './components/acceuil/acceuil.component';
 import { FooterComponent } from './components/footer/footer.component';
 import { PartnerComponent } from './components/partner/partner.component';
@@ -15,8 +17,8 @@ import { CourseDetailComponent } from './components/course/course-detail/course-
 import { AboutComponent } from './components/about/about.component';
 import { FormationViewComponent } from './components/formation/formation-view/formation-view.component';
 import { HttpClientModule} from '@angular/common/http';
-import { CourseService } from './services/course.service';
-
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { LoginComponent } from './admin/login/login.component';
 @NgModule({
   declarations: [
     AppComponent,
@@ -30,14 +32,17 @@ import { CourseService } from './services/course.service';
     HeaderComponent,
     CourseDetailComponent,
     AboutComponent,
-    FormationViewComponent
+    FormationViewComponent,
+    LoginComponent
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
-    HttpClientModule
+    HttpClientModule,
+    FormsModule,
+    ReactiveFormsModule
   ],
-  providers: [CourseService],
-  bootstrap: [AppComponent,AcceuilComponent,CourseListComponent,FormationViewComponent],
+  providers: [CourseService,UserService],
+  bootstrap: [AppComponent, AcceuilComponent,CourseListComponent,FormationViewComponent,LoginComponent],
 })
 export class AppModule { }
