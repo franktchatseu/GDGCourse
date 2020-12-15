@@ -136,6 +136,6 @@ export class CourseListComponent implements OnInit {
   // function de rech erche d'un blog
   search(event) {
     this.courses = this.course_tmp;
-    this.courses = this.courses.filter( course => course.slug.toLowerCase().includes(event.target.value.toLowerCase()));
+    this.courses = this.courses.filter( course => course.slug.toLotitlewerCase().includes(event.target.value.toLowerCase()));
   }
 }
