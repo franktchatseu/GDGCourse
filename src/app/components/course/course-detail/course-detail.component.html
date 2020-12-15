@@ -1,23 +1,21 @@
 <div class="single-blog-post">
     <app-header headerTitle="Course Title"></app-header>
-    <div class="container">
+    <div class="container-fluid">
         
         <div class="row">
-            <div class="col-12 offset-lg-1 col-lg-1">
+            <div class="col-1 offset-1">
                 <div class="post-share">
                     <h3>share</h3>
 
-                    <ul class="flex flex-wrap align-items-center p-0 m-0">
+                    <ul class="flex flex-wrap align-items-center p-2 m-1">
                         <li><a href="#"><i class="fa fa-facebook"></i></a></li>
                         <li><a href="#"><i class="fa fa-twitter"></i></a></li>
-                        <li><a href="#"><i class="fa fa-google-plus"></i></a></li>
                         <li><a href="#"><i class="fa fa-instagram"></i></a></li>
-                        <li><a href="#"><i class="fa fa-thumb-tack"></i></a></li>
                     </ul>
                 </div><!-- .post-share -->
             </div><!-- .col -->
 
-            <div class="col-12 col-lg-8">
+            <div class="col-lg-6">
                 <div class="single-post-wrap">
                     <p>This is what we do: My husband monitors travel sites and email subscription services for
                         super-cheap flights or error fares. Sometimes one of us travels for work and the other tags
@@ -67,40 +65,49 @@
                     </ul>
                 </div><!-- .tags-links -->
 
-                <div class="related-blog-posts">
-                    <header class="entry-heading flex flex-wrap justify-content-between align-items-center">
-                        <h2 class="entry-title">Related Courses</h2>
 
-                        <a href="#">View all</a>
-                    </header><!-- .entry-heading -->
+            </div><!-- .col -->
+            <div class="sidebar">
+                <div class="container mr-1">
+                    <div class="search-widget">
+                        <form class="flex flex-wrap align-items-center">
+                            <input type="search" placeholder="Search...">
+                            <button type="submit" class="flex justify-content-center align-items-center"><i
+                                    class="fa fa-search"></i></button>
+                        </form><!-- .flex -->
+                    </div><!-- .search-widget -->
+                    <div class="">
+                        <div class="latest-courses">
+                            <h2>Latest Courses</h2>
+        
+                            <ul class="p-0 m-0">
+                                <li class="flex flex-wrap justify-content-between align-items-center" *ngFor="let course of relatedCourses">
+                                    <img [src]="course.image" alt="">
+        
+                                    <div class="content-wrap">
+                                        <h3><a href="#">{{course.title}}</a></h3>
+        
+                                        <div class="course-cost free-cost">Official</div>
+                                    </div><!-- .content-wrap -->
+                                </li>
+                            </ul>
+                        </div><!-- .latest-courses -->
+                    </div>
+                    
+                    <div class="ads">
+                        <img src="assets/images/ads.jpg" alt="">
+                    </div><!-- .ads -->
+    
+                    
+                </div>
+               
+            </div>
 
-                    <div class="row mx-m-25">
-                        <div class="col-12 col-lg-6 px-25" *ngFor="let course of relatedCourses">
-                            <div class="blog-post-content">
-                                <figure class="blog-post-thumbnail position-relative m-0">
-                                    <a href="#"><img [src]="course.image" alt="image de couverture de article"></a>
+        </div><!-- .row -->
+        <div class="container">
+            
+            <div class="col-lg-8">
 
-                                    <div class="posted-date position-absolute">
-                                        <div class="day">{{course.date | date:'dd'}}</div>
-                                        <div class="month">{{course.date | date:'MMM'}}</div>
-                                    </div>
-                                </figure><!-- .blog-post-thumbnail -->
-
-                                <div class="blog-post-content-wrap">
-                                    <header class="entry-header">
-                                        <h2 class="entry-title"><a href="#">{{course.title}}</a></h2>
-
-                                        <div class="entry-meta flex flex-wrap align-items-center">
-                                            <div class="post-author"><a href="#">{{course.author}}</a></div>
-
-                                            
-                                        </div><!-- .entry-meta -->
-                                    </header><!-- .entry-header -->
-                                </div><!-- .blog-post-content-wrap -->
-                            </div><!-- .blog-post-content -->
-                        </div><!-- .col -->
-                    </div><!-- .row -->
-                </div><!-- .related-course -->
 
                 <div class="author-box">
                     <div class="author-info flex flex-wrap">
@@ -126,110 +133,109 @@
                         </div><!-- .author-details -->
                     </div><!-- .author-info -->
                 </div><!-- .author-box -->
-
                 <div class="post-comments-wrap">
                     <div class="post-comments">
                         <h3 class="comments-title"><span class="comments-number">02 Comments</span></h3>
-
+    
                         <ol class="comment-list">
                             <li class="comment">
                                 <article class="comment-body">
                                     <figure class="comment-author-avatar">
                                         <img src="assets/images/c-1.png" alt="">
                                     </figure><!-- .comment-author-avatar -->
-
+    
                                     <div class="comment-wrap">
                                         <div class="comment-author">
                                             <span class="comment-meta d-block">
                                                 <a href="#">27 Aug 2018</a>
                                             </span><!-- .comment-meta -->
-
+    
                                             <span class="fn">
                                                 <a href="#">Chris Hadfield</a>
                                             </span><!-- .fn -->
                                         </div><!-- .comment-author -->
-
+    
                                         <p>Neque porro quisquam est, qui dolorem ipsum quia dolor sit amet, consectetur,
                                             adipisci velit, sed quia non numquam eius modi</p>
-
+    
                                         <div class="reply">
                                             <a href="#">like</a>
                                             <a href="#">reply</a>
                                         </div><!-- .reply -->
                                     </div><!-- .comment-wrap -->
-
+    
                                     <div class="clearfix"></div>
                                 </article><!-- .comment-body -->
-
+    
                                 <ol class="children">
                                     <li class="comment">
                                         <article class="comment-body">
                                             <figure class="comment-author-avatar">
                                                 <img src="assets/images/c-2.png" alt="">
                                             </figure><!-- .comment-author-avatar -->
-
+    
                                             <div class="comment-wrap">
                                                 <div class="comment-author">
                                                     <span class="comment-meta d-block">
                                                         <a href="#">27 Aug 2018</a>
                                                     </span><!-- .comment-meta -->
-
+    
                                                     <span class="fn">
                                                         <a href="#">Albert Einstein</a>
                                                     </span><!-- .fn -->
                                                 </div><!-- .comment-author -->
-
+    
                                                 <p>Neque porro quisquam est, qui dolorem ipsum quia dolor sit amet,
                                                     consectetur, adipisci velit, sed quia non numquam eius modi </p>
-
+    
                                                 <div class="reply">
                                                     <a href="#">like</a>
                                                     <a href="#">reply</a>
                                                 </div><!-- .reply -->
                                             </div><!-- .comment-wrap -->
-
+    
                                             <div class="clearfix"></div>
                                         </article><!-- .comment-body -->
                                     </li><!-- .comment -->
                                 </ol><!-- .children -->
                             </li><!-- .comment -->
-
+    
                             <li class="comment">
                                 <article class="comment-body">
                                     <figure class="comment-author-avatar">
                                         <img src="assets/images/c-3.png" alt="">
                                     </figure><!-- .comment-author-avatar -->
-
+    
                                     <div class="comment-wrap">
                                         <div class="comment-author">
                                             <span class="comment-meta d-block">
                                                 <a href="#">27 Aug 2018</a>
                                             </span><!-- .comment-meta -->
-
+    
                                             <span class="fn">
                                                 <a href="#">Henry Ford</a>
                                             </span><!-- .comment-autho -->
                                         </div><!-- .comment-author -->
-
+    
                                         <p>Neque porro quisquam est, qui dolorem ipsum quia dolor sit amet, consectetur,
                                             adipisci velit, sed quia non numquam eius modi </p>
-
+    
                                         <div class="reply">
                                             <a href="#">like</a>
                                             <a href="#">reply</a>
                                         </div><!-- .reply -->
                                     </div><!-- .comment-wrap -->
-
+    
                                     <div class="clearfix"></div>
                                 </article><!-- .comment-body -->
                             </li><!-- .comment -->
                         </ol><!-- .comment-list -->
                     </div><!-- .post-comments -->
-
+    
                     <div class="comments-form">
                         <div class="comment-respond">
                             <h3 class="comment-reply-title">Leave a comment</h3>
-
+    
                             <form class="comment-form">
                                 <input type="text" placeholder="Name">
                                 <input type="email" placeholder="Email">
@@ -240,7 +246,8 @@
                         </div><!-- .comment-respond -->
                     </div><!-- .comments-form -->
                 </div><!-- .post-comments-wrap -->
-            </div><!-- .col -->
-        </div><!-- .row -->
+            </div>
+
+        </div>
     </div><!-- .container -->
 </div>

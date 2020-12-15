@@ -9,60 +9,30 @@ import { UserService } from 'src/app/services/user.service';
 })
 export class CourseListComponent implements OnInit {
 
-  courses: any;
-  latestCourses: any;
+  courses: any = [];
+  course_tmp : any = [];
+  latestCourses: any = [];
   categories: any;
   urlServer: "http://localhost:8000"
   tags: any
   comments: any
   responses: any
+  nbreofPage: number
+  tablePage: number[] = []
+  activePage: number = 1
 
   constructor(
     private courseService: CourseService,
     private userService: UserService,
 
-  ) { }
+  ) {
+
+  }
 
   ngOnInit() {
-    this.courses = [
-      {
-        image: "assets/images/1.jpg",
-        title: "The Complete Android Developer Course",
-        author: "Frank Tchatseu",
-        date: "20/12/2020"
-      },
-      {
-        image: "assets/images/2.jpg",
-        title: "Hacking Ethique",
-        author: "Ngounou Loic",
-        date: "20/12/2020"
-      },
-      {
-        image: "assets/images/3.jpg",
-        title: "Formation Flutter",
-        author: "Rousvel",
-        date: "20/10/2020"
-      },
-      {
-        image: "assets/images/4.jpg",
-        title: "Learn Phyton",
-        author: "Luc Luc",
-        date: "10/02/2020"
-      },
-      {
-        image: "assets/images/5.jpg",
-        title: "Learn Angular",
-        author: "Abdel Abdel",
-        date: "27/12/2021"
-      },
-      {
-        image: "assets/images/1.jpg",
-        title: "Les bases en securite informatique",
-        author: "Tchamou Ramses",
-        date: "20/12/2020"
-      },
-    ];
-    
+
+    console.log(this.tablePage)
+
     this.latestCourses = [
       {
         image: "assets/images/t-1.jpg",
@@ -82,17 +52,26 @@ export class CourseListComponent implements OnInit {
       },
     ]
     //recuperation de tous les cours.
-    //this.getAllCourses();
+    this.getAllCourses(1);
+
     this.getAllCategories()
     this.getAllTag()
   }
 
   //methode de la classe course
-  getAllCourses() {
-    this.courseService.all().then(
+  getAllCourses(page) {
+    this.courseService.getPage(page).then(
       (data) => {
-        this.courses = data;
+
+        for (var i = 0; i < data.count / 2; i++) {
+          this.tablePage[i] = i;
+          console.log(i)
+        }
+        this.courses = data.results;
+        this.course_tmp = data.results
+        this.nbreofPage = this.courses.count / 2;
         console.log(this.courses)
+        this.pageActive(page)
       }
     ).catch(
       (error) => {
@@ -100,6 +79,7 @@ export class CourseListComponent implements OnInit {
       }
     )
   }
+
   //recuperation de toutes les categories
   getAllCategories() {
     this.courseService.allCategory().then(
@@ -115,7 +95,7 @@ export class CourseListComponent implements OnInit {
 
   }
   //recuperer les articles par categories
-  getArticlesByCategories(category_id){
+  getArticlesByCategories(category_id) {
     this.courseService.articleByCategory(category_id).then(
       (data) => {
         this.courses = data
@@ -128,26 +108,34 @@ export class CourseListComponent implements OnInit {
   }
 
   //recuperation des tags articles
-  getAllTag(){
+  getAllTag() {
     this.courseService.getAllTag().then(
-      (data)=>{
+      (data) => {
         this.tags = data
       },
-      (error)=>{
+      (error) => {
         console.log(error)
       }
     )
   }
   //fonction qui retourne un user
-  getUser(user_id){
+  getUser(user_id) {
     this.userService.find(user_id).then(
-      (data)=>{
+      (data) => {
         this.tags = data
       },
-      (error)=>{
+      (error) => {
         console.log(error)
       }
     )
   }
-   
+  pageActive(page) {
+    this.activePage = page;
+  }
+
+  // function de rech erche d'un blog
+  search(event) {
+    this.courses = this.course_tmp;
+    this.courses = this.courses.filter( course => course.slug.toLowerCase().includes(event.target.value.toLowerCase()));
+  }
 }

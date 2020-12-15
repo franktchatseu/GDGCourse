@@ -54,7 +54,8 @@ export class CourseDetailComponent implements OnInit {
     ];
 
     //recuperatiion des tags pour cet article
-    this.getTagByArticle(4)
+    //this.getTagByArticle(4)
+    this.getAllTag()
     this.getRelatedCourse(1)
   }
 
@@ -84,6 +85,18 @@ export class CourseDetailComponent implements OnInit {
       }
     )
   }
+  //recuperation des tags articles
+  getAllTag(){
+    this.courseService.getAllTag().then(
+      (data)=>{
+        this.tags = data
+      },
+      (error)=>{
+        console.log(error)
+      }
+    )
+  }
+  //fo
 
   
 }

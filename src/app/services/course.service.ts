@@ -11,6 +11,11 @@ export class CourseService {
     private http:HttpClient
   ) { }
 
+  //methode qui retourne les data à partir de url
+  getPage(page): Promise<any> {
+    const url = Routes.BLOG+'?page='+page
+    return this.http.get<any>(url).toPromise();
+  }
   create(formData: FormData): Promise<any> {
     return this.http.post<any>(Routes.BLOG, formData).toPromise();
   }
