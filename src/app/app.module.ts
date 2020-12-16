@@ -19,6 +19,7 @@ import { FormationViewComponent } from './components/formation/formation-view/fo
 import { HttpClientModule} from '@angular/common/http';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { LoginComponent } from './admin/login/login.component';
+import { ContactComponent } from './components/contact/contact.component';
 @NgModule({
   declarations: [
     AppComponent,
@@ -33,7 +34,8 @@ import { LoginComponent } from './admin/login/login.component';
     CourseDetailComponent,
     AboutComponent,
     FormationViewComponent,
-    LoginComponent
+    LoginComponent,
+    ContactComponent
   ],
   imports: [
     BrowserModule,
