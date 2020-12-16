@@ -57,9 +57,9 @@
                 <div class="pagination flex flex-wrap justify-content-between align-items-center">
                     <div class="col-12 col-lg-12 order-2 order-lg-1 mt-3 mt-lg-0">
                         <ul class="flex flex-wrap align-items-center order-2 order-lg-1 p-0 m-0">
-                            
-                            <li class="{{ this.activePage===page+1 ? 'active' : '' }}" *ngFor="let page of tablePage" (click)="getAllCourses(page+1)"><a >{{page+1}}</a></li>
-                            <li><a href="#"><i class="fa fa-angle-right"></i></a></li>
+                            <li *ngIf="this.previousUrl" (click)="getCourseByUrl(this.previousUrl)"><a ><i class="fa fa-angle-left"></i></a></li>
+                            <li class="{{ this.activePage===page+1 ? 'active' : '' }}" *ngFor="let page of tablePage" (click)="getAllCourses(page+1)"><a >{{page}}</a></li>
+                            <li *ngIf="this.nextUrl" (click)="getCourseByUrl(this.nextUrl)"><a ><i class="fa fa-angle-right"></i></a></li>
                         </ul>
                     </div>
 

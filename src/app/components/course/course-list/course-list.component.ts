@@ -10,7 +10,7 @@ import { UserService } from 'src/app/services/user.service';
 export class CourseListComponent implements OnInit {
 
   courses: any = [];
-  course_tmp : any = [];
+  course_tmp: any = [];
   latestCourses: any = [];
   categories: any;
   urlServer: "http://localhost:8000"
@@ -20,6 +20,8 @@ export class CourseListComponent implements OnInit {
   nbreofPage: number
   tablePage: number[] = []
   activePage: number = 1
+  nextUrl: any
+  previousUrl: any
 
   constructor(
     private courseService: CourseService,
@@ -64,14 +66,34 @@ export class CourseListComponent implements OnInit {
       (data) => {
 
         for (var i = 0; i < data.count / 2; i++) {
-          this.tablePage[i] = i;
+          this.tablePage[i] = i+1;
           console.log(i)
         }
         this.courses = data.results;
         this.course_tmp = data.results
         this.nbreofPage = this.courses.count / 2;
+        this.nextUrl = data.next;
+        this.previousUrl = data.previous
         console.log(this.courses)
         this.pageActive(page)
+      }
+    ).catch(
+      (error) => {
+        console.log(error);
+      }
+    )
+  }
+  //next page and previous page
+  //methode de la classe course
+  getCourseByUrl(url) {
+    this.courseService.getUrl(url).then(
+      (data) => {
+        this.courses = data.results;
+        this.course_tmp = data.results
+        this.nextUrl = data.next;
+        this.previousUrl = data.previous
+        this.nextUrl? this.activePage = this.activePage + 1 : this.activePage = this.activePage - 1
+        
       }
     ).catch(
       (error) => {
@@ -92,7 +114,6 @@ export class CourseListComponent implements OnInit {
         console.log(error);
       }
     )
-
   }
   //recuperer les articles par categories
   getArticlesByCategories(category_id) {
@@ -136,6 +157,6 @@ export class CourseListComponent implements OnInit {
   // function de rech erche d'un blog
   search(event) {
     this.courses = this.course_tmp;
-    this.courses = this.courses.filter( course => course.slug.toLotitlewerCase().includes(event.target.value.toLowerCase()));
+    this.courses = this.courses.filter(course => course.slug.toLowerCase().includes(event.target.value.toLowerCase()));
   }
 }
