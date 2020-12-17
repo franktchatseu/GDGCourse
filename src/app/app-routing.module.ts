@@ -12,7 +12,7 @@ const routes: Routes = [
   {path:'',component:AcceuilComponent},
   {path:'login', component:LoginComponent},
   {path:'course-list',component:CourseListComponent},
-  {path:'course-content',component:CourseDetailComponent},
+  {path:'course-content/:slug',component:CourseDetailComponent},
   {path:'about-us',component:AboutComponent},
   {path: 'formation', component: FormationViewComponent},
   {path: '**', redirectTo:''}

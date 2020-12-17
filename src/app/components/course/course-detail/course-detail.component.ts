@@ -1,4 +1,7 @@
 import { Component, OnInit } from '@angular/core';
+import { ActivatedRoute, Router } from '@angular/router';
+import { error } from 'protractor';
+import { CommentService } from 'src/app/services/comment.service';
 import { CourseService } from 'src/app/services/course.service';
 
 @Component({
@@ -7,10 +10,22 @@ import { CourseService } from 'src/app/services/course.service';
   styleUrls: ['./course-detail.component.scss']
 })
 export class CourseDetailComponent implements OnInit {
+  course: any
   relatedCourses: any
   tags: any;
+  commentCourses: any
+  newComment = {
+    slugCourse: "",
+    name: '',
+    email: '',
+    body: ''
+  }
+
   constructor(
-    private courseService: CourseService
+    private courseService: CourseService,
+    private commentService: CommentService,
+    private route: ActivatedRoute,
+    private router: Router
   ) { }
 
   ngOnInit() {
@@ -53,15 +68,67 @@ export class CourseDetailComponent implements OnInit {
       },
     ];
 
-    //recuperatiion des tags pour cet article
-    //this.getTagByArticle(4)
-    this.getAllTag()
+    this.commentCourses = [
+      {
+        name: "Frank tchatseu",
+        created_at: new Date(),
+        body: "votre article est tres interessant",
+        response: [
+          {
+            name: "Abdel",
+            created_at: new Date(),
+            body: "merci bien",
+          },
+          {
+            name: "Jule",
+            created_at: new Date(),
+            body: "beaucoup de courage à vous",
+          }
+        ]
+      },
+      {
+        name: "Loic Back",
+        created_at: new Date(),
+        body: "vous expliquez tres bien",
+        response: [
+          {
+            name: "Frank",
+            created_at: new Date(),
+            body: "Thanks",
+          },
+          {
+            name: "Roosvelt",
+            created_at: new Date(),
+            body: "good job",
+          }
+        ]
+      }
+    ]
+    const course_slug = this.route.snapshot.paramMap.get("slug");
+    this.courseService.findCourse(course_slug).then(
+      (data) => {
+        this.course = data;
+        console.log(this.course)
+      }
+    ).catch(
+      (error) => {
+        console.log(error);
+        this.router.navigate(['/course-list'])
+      }
+    )
+
+    //related course
     this.getRelatedCourse(1)
+    //recuperatiion des commentaires pour cet article
+    
+    //this.AllCommentByArticle(course_slug)
   }
+
+
 
   //recuperation des articles de la meme categorie
   //recuperer les articles par categories
-  getRelatedCourse(category_id){
+  getRelatedCourse(category_id) {
     this.courseService.articleByCategory(category_id).then(
       (data) => {
         this.relatedCourses = data;
@@ -75,28 +142,28 @@ export class CourseDetailComponent implements OnInit {
   }
 
   //recuperation des tags d'un article ici on precise id de articke
-  getTagByArticle(article_id){
-    this.courseService.getTagsByCourse(article_id).then(
-      (data)=>{
-        this.tags = data
+  AllCommentByArticle(course_slug) {
+    this.commentService.allCommentByCourse(course_slug).then(
+      (data) => {
+        this.commentCourses = data
       },
-      (error)=>{
+      (error) => {
         console.log(error)
       }
     )
   }
-  //recuperation des tags articles
-  getAllTag(){
-    this.courseService.getAllTag().then(
-      (data)=>{
-        this.tags = data
-      },
-      (error)=>{
-        console.log(error)
-      }
-    )
-  }
-  //fo
 
-  
+  addComment(comment) {
+    this.commentService.addComment(comment).then(
+      (data) => {
+        console.log(data)
+        this.AllCommentByArticle(this.course.slug)
+      },
+      (error) => {
+        console.log(error)
+      }
+    )
+  }
+
+
 }

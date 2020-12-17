@@ -1,7 +1,7 @@
 <div class="single-blog-post">
     <app-header headerTitle="Course Title"></app-header>
     <div class="container-fluid">
-        
+
         <div class="row">
             <div class="col-1 offset-1">
                 <div class="post-share">
@@ -16,52 +16,14 @@
             </div><!-- .col -->
 
             <div class="col-lg-6">
-                <div class="single-post-wrap">
-                    <p>This is what we do: My husband monitors travel sites and email subscription services for
-                        super-cheap flights or error fares. Sometimes one of us travels for work and the other tags
-                        along. When we find a good deal, we make a split-second decision—because great airfares don’t
-                        last long—and then start planning. We’re both freelance writers, so we have some flexibility in
-                        terms of scheduling. We watch hotel prices, and often book rooms using points, free nights and
-                        other discounts. We plan carefully, and if we decide that a trip might involve stops in multiple
-                        cities, we price our transportation options. We check exchange rates on currency. We read up on
-                        attractions, look for deals, and seek out free walking tours.</p>
+                <div class="single-post-wrap" [innerHTML]="course.body">
 
-                    <blockquote>
-                        Some people dream of success, while other people get up every morning and make it happen.”
-
-                        <span>Wayne Huizenga</span>
-                    </blockquote>
-
-                    <p>In the past few years, we’ve been to mountains, beaches, massive cities and isolated towns you
-                        could speed through in a blink. We’ve been all over the U.S. and to a dozen or so countries.
-                        That means long flights, wandering dazedly through strange places, sometimes not knowing what or
-                        where we’ll be eating next or exactly when we’ll make it to our next destination. But it also
-                        means volcanoes, glaciers, geysers and warm friendly strangers from all over the world.</p>
-
-                    <p>And it means memories we’ll treasure forever. Our friends think it’s kind of kitschy, but my
-                        husband, Mike, and I collect magnets from the places we go. We arrange them on the side of the
-                        fridge that faces our table in the kitchen, so that when we’re sitting together we can see the
-                        collection, which reminds us of some of our happiest times.</p>
-
-                    <figure class="my-4"><img src="assets/images/blog-post-img.png" alt=""></figure>
-
-                    <h3 class="mb-3">Immediate Dividends</h3>
-
-                    <p>Some part of the benefit is purely financial. There are experiences and lessons you learn on the
-                        road that can be directly applied to business and investment. You witness firsthand new trends,
-                        or the way old trends have shown up in new places, or the way some trends seem nearly universal.
-                        You see for yourself new styles of clothing, where young professionals are shopping, which
-                        brands are popular in different places. </p>
-
-                    <p>In some countries, you need only to scan a busy street to get a clear sense of what might soon be
-                        popular in the U.S., and which American exports might be the next big thing somewhere else. (In
-                        Portugal, we were surprised when a woman in her 20s told us how much she loves Guy Fieri.)</p>
                 </div><!-- .single-post-wrap -->
 
                 <div class="tags-links mt-4">
                     <ul class="d-flex flex-wrap align-items-center p-0 m-0">
-                        <li *ngFor="let tag of tags"><a href="#">{{tag.title}}</a></li>
-                        
+                        <li *ngFor="let tag of this.course.tag"><a href="#">{{tag}}</a></li>
+
                     </ul>
                 </div><!-- .tags-links -->
 
@@ -79,33 +41,34 @@
                     <div class="">
                         <div class="latest-courses">
                             <h2>Latest Courses</h2>
-        
+
                             <ul class="p-0 m-0">
-                                <li class="flex flex-wrap justify-content-between align-items-center" *ngFor="let course of relatedCourses">
+                                <li class="flex flex-wrap justify-content-between align-items-center"
+                                    *ngFor="let course of relatedCourses">
                                     <img [src]="course.image" alt="">
-        
+
                                     <div class="content-wrap">
                                         <h3><a href="#">{{course.title}}</a></h3>
-        
+
                                         <div class="course-cost free-cost">Official</div>
                                     </div><!-- .content-wrap -->
                                 </li>
                             </ul>
                         </div><!-- .latest-courses -->
                     </div>
-                    
+
                     <div class="ads">
                         <img src="assets/images/ads.jpg" alt="">
                     </div><!-- .ads -->
-    
-                    
+
+
                 </div>
-               
+
             </div>
 
         </div><!-- .row -->
         <div class="container">
-            
+
             <div class="col-lg-8">
 
 
@@ -122,7 +85,7 @@
                         </div><!-- .author-avatar -->
 
                         <div class="author-details">
-                            <h3 class="author-name">Ms. Lara Croft <span>Admin</span></h3>
+                            <h3 class="author-name">{{this.course.user}}<span>Redactor</span></h3>
 
                             <div class="entry-content mt-3">
                                 <p>Hi! I'm Colt. I'm a developer with a serious love for teaching. I've spent the last
@@ -135,111 +98,73 @@
                 </div><!-- .author-box -->
                 <div class="post-comments-wrap">
                     <div class="post-comments">
-                        <h3 class="comments-title"><span class="comments-number">02 Comments</span></h3>
-    
+                        <h3 class="comments-title"><span class="comments-number">{{this.commentCourses.length}} Comments</span></h3>
+
                         <ol class="comment-list">
-                            <li class="comment">
+                            <li class="comment" *ngFor="let comment of this.commentCourses">
                                 <article class="comment-body">
                                     <figure class="comment-author-avatar">
                                         <img src="assets/images/c-1.png" alt="">
                                     </figure><!-- .comment-author-avatar -->
-    
+
                                     <div class="comment-wrap">
                                         <div class="comment-author">
                                             <span class="comment-meta d-block">
-                                                <a href="#">27 Aug 2018</a>
+                                                <a href="#">{{comment.created_at | date:'dd-MMM-yyyy'}}</a>
                                             </span><!-- .comment-meta -->
-    
+
                                             <span class="fn">
-                                                <a href="#">Chris Hadfield</a>
+                                                <a href="#">{{comment.name}}</a>
                                             </span><!-- .fn -->
                                         </div><!-- .comment-author -->
-    
-                                        <p>Neque porro quisquam est, qui dolorem ipsum quia dolor sit amet, consectetur,
-                                            adipisci velit, sed quia non numquam eius modi</p>
-    
+
+                                        <p>{{comment.body}}</p>
+
                                         <div class="reply">
-                                            <a href="#">like</a>
                                             <a href="#">reply</a>
                                         </div><!-- .reply -->
                                     </div><!-- .comment-wrap -->
-    
+
                                     <div class="clearfix"></div>
                                 </article><!-- .comment-body -->
-    
+
                                 <ol class="children">
-                                    <li class="comment">
+                                    <li class="comment" *ngFor="let response of comment.response">
                                         <article class="comment-body">
                                             <figure class="comment-author-avatar">
-                                                <img src="assets/images/c-2.png" alt="">
+                                                <img src="assets/images/avatar.jpg" alt="">
                                             </figure><!-- .comment-author-avatar -->
-    
+
                                             <div class="comment-wrap">
                                                 <div class="comment-author">
                                                     <span class="comment-meta d-block">
-                                                        <a href="#">27 Aug 2018</a>
+                                                        <a href="#">{{comment.created_at | date:'dd-MMM-yyyy'}}</a>
                                                     </span><!-- .comment-meta -->
-    
+
                                                     <span class="fn">
-                                                        <a href="#">Albert Einstein</a>
+                                                        <a href="#">{{response.name}}</a>
                                                     </span><!-- .fn -->
                                                 </div><!-- .comment-author -->
-    
-                                                <p>Neque porro quisquam est, qui dolorem ipsum quia dolor sit amet,
-                                                    consectetur, adipisci velit, sed quia non numquam eius modi </p>
-    
-                                                <div class="reply">
-                                                    <a href="#">like</a>
-                                                    <a href="#">reply</a>
-                                                </div><!-- .reply -->
+
+                                                <p>{{response.body}}</p>
                                             </div><!-- .comment-wrap -->
-    
+
                                             <div class="clearfix"></div>
                                         </article><!-- .comment-body -->
                                     </li><!-- .comment -->
                                 </ol><!-- .children -->
                             </li><!-- .comment -->
-    
-                            <li class="comment">
-                                <article class="comment-body">
-                                    <figure class="comment-author-avatar">
-                                        <img src="assets/images/c-3.png" alt="">
-                                    </figure><!-- .comment-author-avatar -->
-    
-                                    <div class="comment-wrap">
-                                        <div class="comment-author">
-                                            <span class="comment-meta d-block">
-                                                <a href="#">27 Aug 2018</a>
-                                            </span><!-- .comment-meta -->
-    
-                                            <span class="fn">
-                                                <a href="#">Henry Ford</a>
-                                            </span><!-- .comment-autho -->
-                                        </div><!-- .comment-author -->
-    
-                                        <p>Neque porro quisquam est, qui dolorem ipsum quia dolor sit amet, consectetur,
-                                            adipisci velit, sed quia non numquam eius modi </p>
-    
-                                        <div class="reply">
-                                            <a href="#">like</a>
-                                            <a href="#">reply</a>
-                                        </div><!-- .reply -->
-                                    </div><!-- .comment-wrap -->
-    
-                                    <div class="clearfix"></div>
-                                </article><!-- .comment-body -->
-                            </li><!-- .comment -->
+
                         </ol><!-- .comment-list -->
                     </div><!-- .post-comments -->
-    
+
                     <div class="comments-form">
                         <div class="comment-respond">
                             <h3 class="comment-reply-title">Leave a comment</h3>
-    
+
                             <form class="comment-form">
-                                <input type="text" placeholder="Name">
+                                <input type="text" placeholder="Name" >
                                 <input type="email" placeholder="Email">
-                                <input type="url" placeholder="Website">
                                 <textarea rows="4" placeholder="Messages"></textarea>
                                 <input type="submit" value="send message">
                             </form><!-- .comment-form -->

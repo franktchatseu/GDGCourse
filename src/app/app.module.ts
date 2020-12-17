@@ -19,6 +19,7 @@ import { FormationViewComponent } from './components/formation/formation-view/fo
 import { HttpClientModule} from '@angular/common/http';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { LoginComponent } from './admin/login/login.component';
+import { CommentService } from './services/comment.service';
 @NgModule({
   declarations: [
     AppComponent,
@@ -42,7 +43,7 @@ import { LoginComponent } from './admin/login/login.component';
     FormsModule,
     ReactiveFormsModule
   ],
-  providers: [CourseService,UserService],
+  providers: [CourseService,UserService, CommentService],
   bootstrap: [AppComponent, AcceuilComponent,CourseListComponent,FormationViewComponent,LoginComponent],
 })
 export class AppModule { }

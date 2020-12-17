@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 import { CourseService } from 'src/app/services/course.service';
 import { UserService } from 'src/app/services/user.service';
 
@@ -22,10 +23,11 @@ export class CourseListComponent implements OnInit {
   activePage: number = 1
   nextUrl: any
   previousUrl: any
-
   constructor(
     private courseService: CourseService,
     private userService: UserService,
+    private router: Router
+
 
   ) {
 
@@ -159,4 +161,9 @@ export class CourseListComponent implements OnInit {
     this.courses = this.course_tmp;
     this.courses = this.courses.filter(course => course.slug.toLowerCase().includes(event.target.value.toLowerCase()));
   }
+    
+  detailCourse(slug) {
+    this.router.navigate(['/course-content/'+slug])
+  }
+
 }

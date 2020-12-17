@@ -30,8 +30,8 @@ export class CourseService {
   }
 
  
-  find(id: number): Promise<any> {
-    return this.http.get<any>(`${Routes.BLOG}/${id}`).toPromise();
+  findCourse(slug): Promise<any> {
+    return this.http.get<any>(`${Routes.BLOG}/${slug}`).toPromise();
   }
 
   all(): Promise<any> {
