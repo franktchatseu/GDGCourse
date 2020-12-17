@@ -104,7 +104,7 @@
                             <li class="comment" *ngFor="let comment of this.commentCourses">
                                 <article class="comment-body">
                                     <figure class="comment-author-avatar">
-                                        <img src="assets/images/c-1.png" alt="">
+                                        <img src="assets/images/avatar.jpg" alt="">
                                     </figure><!-- .comment-author-avatar -->
 
                                     <div class="comment-wrap">
@@ -162,12 +162,12 @@
                         <div class="comment-respond">
                             <h3 class="comment-reply-title">Leave a comment</h3>
 
-                            <form class="comment-form">
-                                <input type="text" placeholder="Name" >
-                                <input type="email" placeholder="Email">
-                                <textarea rows="4" placeholder="Messages"></textarea>
-                                <input type="submit" value="send message">
-                            </form><!-- .comment-form -->
+                            <div class="comment-form">
+                                <input type="text" placeholder="Name" [(ngModel)]="this.commentName" >
+                                <input type="email" placeholder="Email" [(ngModel)]="this.commentEmail" >
+                                <textarea rows="4" placeholder="Messages" [(ngModel)]="this.commentBody" ></textarea>
+                                <input type="submit" value="send message" (click)="addComment()">
+                            </div><!-- .comment-form -->
                         </div><!-- .comment-respond -->
                     </div><!-- .comments-form -->
                 </div><!-- .post-comments-wrap -->

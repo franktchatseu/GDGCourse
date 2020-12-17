@@ -14,13 +14,10 @@ export class CourseDetailComponent implements OnInit {
   relatedCourses: any
   tags: any;
   commentCourses: any
-  newComment = {
-    slugCourse: "",
-    name: '',
-    email: '',
-    body: ''
-  }
 
+  commentName: string = ""
+  commentEmail: string = ""
+  commentBody: string = ""
   constructor(
     private courseService: CourseService,
     private commentService: CommentService,
@@ -105,6 +102,16 @@ export class CourseDetailComponent implements OnInit {
       }
     ]
     const course_slug = this.route.snapshot.paramMap.get("slug");
+    this.getCourse(course_slug)
+
+    //related course
+    this.getRelatedCourse(1)
+    //recuperatiion des commentaires pour cet article
+
+    //this.AllCommentByArticle(course_slug)
+  }
+
+  getCourse(course_slug){
     this.courseService.findCourse(course_slug).then(
       (data) => {
         this.course = data;
@@ -116,17 +123,8 @@ export class CourseDetailComponent implements OnInit {
         this.router.navigate(['/course-list'])
       }
     )
-
-    //related course
-    this.getRelatedCourse(1)
-    //recuperatiion des commentaires pour cet article
-    
-    //this.AllCommentByArticle(course_slug)
   }
 
-
-
-  //recuperation des articles de la meme categorie
   //recuperer les articles par categories
   getRelatedCourse(category_id) {
     this.courseService.articleByCategory(category_id).then(
@@ -153,11 +151,20 @@ export class CourseDetailComponent implements OnInit {
     )
   }
 
-  addComment(comment) {
-    this.commentService.addComment(comment).then(
+  addComment() {
+    const newComment = {
+      slugCourse: this.course.slug,
+      name: this.commentName,
+      email: this.commentEmail,
+      body: this.commentBody
+    }
+    console.log(newComment)
+    this.commentService.addComment(newComment).then(
       (data) => {
         console.log(data)
+        this.cleanFieds()
         this.AllCommentByArticle(this.course.slug)
+
       },
       (error) => {
         console.log(error)
@@ -165,5 +172,10 @@ export class CourseDetailComponent implements OnInit {
     )
   }
 
-
+  //methode qui vide les champs du formulaire
+  cleanFieds() {
+    this.commentName = "";
+    this.commentEmail = "";
+    this.commentBody = ""
+  }
 }
