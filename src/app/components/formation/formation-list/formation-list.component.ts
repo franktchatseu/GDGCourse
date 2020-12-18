@@ -4,12 +4,11 @@ import { CourseService } from 'src/app/services/course.service';
 import { UserService } from 'src/app/services/user.service';
 
 @Component({
-  selector: 'app-course-list',
-  templateUrl: './course-list.component.html',
-  styleUrls: ['./course-list.component.scss']
+  selector: 'app-formation-list',
+  templateUrl: './formation-list.component.html',
+  styleUrls: ['./formation-list.component.scss']
 })
-export class CourseListComponent implements OnInit {
-
+export class FormationListComponent implements OnInit {
   courses: any = [];
   course_tmp: any = [];
   latestCourses: any = [];
@@ -28,22 +27,36 @@ export class CourseListComponent implements OnInit {
     private userService: UserService,
     private router: Router
 
+  ) { }
 
-  ) {
-
-  }
-
+  
   ngOnInit() {
 
     console.log(this.tablePage)
 
-  
+    this.latestCourses = [
+      {
+        image: "assets/images/t-1.jpg",
+        title: "Concept des Rest Api"
+      },
+      {
+        image: "assets/images/t-2.jpg",
+        title: "Learn React Js"
+      },
+      {
+        image: "assets/images/t-3.jpg",
+        title: "Learn React Native"
+      },
+      {
+        image: "assets/images/t-4.jpg",
+        title: "Learn Phyton for Data Science"
+      },
+    ]
     //recuperation de tous les cours.
     this.getAllCourses(1);
 
     this.getAllCategories()
     this.getAllTag()
-    this.getLastestCourse()
   }
 
   //methode de la classe course
@@ -149,19 +162,4 @@ export class CourseListComponent implements OnInit {
   detailCourse(slug) {
     this.router.navigate(['/course-content/'+slug])
   }
-
-  //recuperation de toutes les categories
-  getLastestCourse() {
-    this.courseService.lastestCourse().then(
-      (data) => {
-        this.latestCourses = data;
-        console.log(this.latestCourses)
-      }
-    ).catch(
-      (error) => {
-        console.log(error);
-      }
-    )
-  }
-
 }

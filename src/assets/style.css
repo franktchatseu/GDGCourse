@@ -176,7 +176,8 @@ a:hover, a:active {
 --------------------------------*/
 .nav-bar {
     padding: 20px 0;
-    background: rgba(255,255,255,.1);
+    background: rgba(0, 216, 133,0.1);
+    
 }
 
 /*

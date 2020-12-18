@@ -25,6 +25,7 @@ export class CourseService {
   }
 
 
+
   update(formData: FormData, id: number): Promise<any> {
     return this.http.post<any>(`${Routes.BLOG}/${id}`, formData).toPromise();
   }
@@ -50,6 +51,10 @@ export class CourseService {
   
   allCategory(){
     return this.http.get<any>(Routes.CATEGORY).toPromise();
+  
+  }
+  lastestCourse(){
+    return this.http.get<any>(Routes.LASTESTBLOG).toPromise();
   
   }
 

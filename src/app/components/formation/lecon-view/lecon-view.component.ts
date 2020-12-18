@@ -1,28 +1,25 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
-import { error } from 'protractor';
 import { CommentService } from 'src/app/services/comment.service';
 import { CourseService } from 'src/app/services/course.service';
-import { UserService } from 'src/app/services/user.service';
 
 @Component({
-  selector: 'app-course-detail',
-  templateUrl: './course-detail.component.html',
-  styleUrls: ['./course-detail.component.scss']
+  selector: 'app-lecon-view',
+  templateUrl: './lecon-view.component.html',
+  styleUrls: ['./lecon-view.component.scss']
 })
-export class CourseDetailComponent implements OnInit {
+export class LeconViewComponent implements OnInit {
   course: any
   relatedCourses: any
   tags: any;
   commentCourses: any
-  user: any
+
   commentName: string = ""
   commentEmail: string = ""
   commentBody: string = ""
   constructor(
     private courseService: CourseService,
     private commentService: CommentService,
-    private userService: UserService,
     private route: ActivatedRoute,
     private router: Router
   ) { }
@@ -67,7 +64,42 @@ export class CourseDetailComponent implements OnInit {
       },
     ];
 
-    
+    this.commentCourses = [
+      {
+        name: "Frank tchatseu",
+        created_at: new Date(),
+        body: "votre article est tres interessant",
+        response: [
+          {
+            name: "Abdel",
+            created_at: new Date(),
+            body: "merci bien",
+          },
+          {
+            name: "Jule",
+            created_at: new Date(),
+            body: "beaucoup de courage à vous",
+          }
+        ]
+      },
+      {
+        name: "Loic Back",
+        created_at: new Date(),
+        body: "vous expliquez tres bien",
+        response: [
+          {
+            name: "Frank",
+            created_at: new Date(),
+            body: "Thanks",
+          },
+          {
+            name: "Roosvelt",
+            created_at: new Date(),
+            body: "good job",
+          }
+        ]
+      }
+    ]
     const course_slug = this.route.snapshot.paramMap.get("slug");
     this.getCourse(course_slug)
 
@@ -75,13 +107,10 @@ export class CourseDetailComponent implements OnInit {
     this.getRelatedCourse(1)
     //recuperatiion des commentaires pour cet article
 
-    this.AllCommentByArticle(course_slug)
-    //RECUP USER
-    //console.log(this.course.user_id)
-    this.getUser(1)
+    //this.AllCommentByArticle(course_slug)
   }
 
-  getCourse(course_slug) {
+  getCourse(course_slug){
     this.courseService.findCourse(course_slug).then(
       (data) => {
         this.course = data;
@@ -90,22 +119,11 @@ export class CourseDetailComponent implements OnInit {
     ).catch(
       (error) => {
         console.log(error);
-        //this.router.navigate(['/course-list'])
+        this.router.navigate(['/course-list'])
       }
     )
   }
-  getUser(user_id) {
-    this.userService.find(user_id).then(
-      (data) => {
-        this.user = data;
-        console.log(this.user)
-      }
-    ).catch(
-      (error) => {
-        console.log(error);
-      }
-    )
-  }
+
   //recuperer les articles par categories
   getRelatedCourse(category_id) {
     this.courseService.articleByCategory(category_id).then(
@@ -124,7 +142,7 @@ export class CourseDetailComponent implements OnInit {
   AllCommentByArticle(course_slug) {
     this.commentService.allCommentByCourse(course_slug).then(
       (data) => {
-        this.commentCourses = data.comment
+        this.commentCourses = data
       },
       (error) => {
         console.log(error)

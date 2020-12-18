@@ -18,6 +18,6 @@ export class CommentService {
     return this.http.post<any>(Routes.RESPONSE, newResponse).toPromise();
   }
   allCommentByCourse(course_slug): Promise<any> {
-    return this.http.get<any>(`${Routes.USER}/${course_slug}`).toPromise();
+    return this.http.get<any>(`${Routes.COMMENT}/${course_slug}`).toPromise();
   }
 }

@@ -20,6 +20,9 @@ import { HttpClientModule} from '@angular/common/http';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { LoginComponent } from './admin/login/login.component';
 import { CommentService } from './services/comment.service';
+import { FormationService } from './services/formation.service';
+import { FormationListComponent } from './components/formation/formation-list/formation-list.component';
+import { LeconViewComponent } from './components/formation/lecon-view/lecon-view.component';
 @NgModule({
   declarations: [
     AppComponent,
@@ -34,7 +37,9 @@ import { CommentService } from './services/comment.service';
     CourseDetailComponent,
     AboutComponent,
     FormationViewComponent,
-    LoginComponent
+    LoginComponent,
+    FormationListComponent,
+    LeconViewComponent
   ],
   imports: [
     BrowserModule,
@@ -43,7 +48,7 @@ import { CommentService } from './services/comment.service';
     FormsModule,
     ReactiveFormsModule
   ],
-  providers: [CourseService,UserService, CommentService],
+  providers: [CourseService,UserService, CommentService,FormationService],
   bootstrap: [AppComponent, AcceuilComponent,CourseListComponent,FormationViewComponent,LoginComponent],
 })
 export class AppModule { }
