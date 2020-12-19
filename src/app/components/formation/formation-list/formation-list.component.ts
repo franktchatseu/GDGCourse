@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
-import { CourseService } from 'src/app/services/course.service';
+import { FormationService } from 'src/app/services/formation.service';
 import { UserService } from 'src/app/services/user.service';
 
 @Component({
@@ -9,21 +9,20 @@ import { UserService } from 'src/app/services/user.service';
   styleUrls: ['./formation-list.component.scss']
 })
 export class FormationListComponent implements OnInit {
-  courses: any = [];
-  course_tmp: any = [];
+  formations: any = [];
+  formations_tmp: any = [];
   latestCourses: any = [];
   categories: any;
+  categorySelected: string = "Formations List"
   urlServer: "http://localhost:8000"
   tags: any
-  comments: any
-  responses: any
   nbreofPage: number
   tablePage: number[] = []
   activePage: number = 1
   nextUrl: any
   previousUrl: any
   constructor(
-    private courseService: CourseService,
+    private formationService: FormationService,
     private userService: UserService,
     private router: Router
 
@@ -53,27 +52,27 @@ export class FormationListComponent implements OnInit {
       },
     ]
     //recuperation de tous les cours.
-    this.getAllCourses(1);
+    this.getAllFormations(1);
 
     this.getAllCategories()
     this.getAllTag()
   }
 
   //methode de la classe course
-  getAllCourses(page) {
-    this.courseService.getPage(page).then(
+  getAllFormations(page) {
+    this.formationService.getPage(page).then(
       (data) => {
-
+        this.categorySelected = "Formations List"
         for (var i = 0; i < data.count / 2; i++) {
           this.tablePage[i] = i+1;
           console.log(i)
         }
-        this.courses = data.results;
-        this.course_tmp = data.results
-        this.nbreofPage = this.courses.count / 2;
+        this.formations = data.results;
+        this.formations_tmp = data.results
+        this.nbreofPage = this.formations.count / 2;
         this.nextUrl = data.next;
         this.previousUrl = data.previous
-        console.log(this.courses)
+        console.log(this.formations)
         this.pageActive(page)
       }
     ).catch(
@@ -84,11 +83,11 @@ export class FormationListComponent implements OnInit {
   }
   //next page and previous page
   //methode de la classe course
-  getCourseByUrl(url) {
-    this.courseService.getUrl(url).then(
+  getFormationByUrl(url) {
+    this.formationService.getUrl(url).then(
       (data) => {
-        this.courses = data.results;
-        this.course_tmp = data.results
+        this.formations = data.results;
+        this.formations_tmp = data.results
         this.nextUrl = data.next;
         this.previousUrl = data.previous
         this.nextUrl? this.activePage = this.activePage + 1 : this.activePage = this.activePage - 1
@@ -103,7 +102,7 @@ export class FormationListComponent implements OnInit {
 
   //recuperation de toutes les categories
   getAllCategories() {
-    this.courseService.allCategory().then(
+    this.formationService.allCategory().then(
       (data) => {
         this.categories = data;
         console.log(this.categories)
@@ -114,22 +113,24 @@ export class FormationListComponent implements OnInit {
       }
     )
   }
-  //recuperer les articles par categories
-  getArticlesByCategories(category_id) {
-    this.courseService.articleByCategory(category_id).then(
+  //recuperer les Formation par categories
+  getFormationByCategories(category) {
+    this.formationService.formationByCategory(category.id).then(
       (data) => {
-        this.courses = data
+        this.formations = data
+        this.categorySelected = category.title;
+        console.log(this.categorySelected)
       }
     ).catch(
       (error) => {
-        this.courses = [];
+        this.formations = [];
       }
     )
   }
 
-  //recuperation des tags articles
+  //recuperation des tags Formation
   getAllTag() {
-    this.courseService.getAllTag().then(
+    this.formationService.getAllTag().then(
       (data) => {
         this.tags = data
       },
@@ -138,28 +139,18 @@ export class FormationListComponent implements OnInit {
       }
     )
   }
-  //fonction qui retourne un user
-  getUser(user_id) {
-    this.userService.find(user_id).then(
-      (data) => {
-        this.tags = data
-      },
-      (error) => {
-        console.log(error)
-      }
-    )
-  }
+
   pageActive(page) {
     this.activePage = page;
   }
 
   // function de rech erche d'un blog
   search(event) {
-    this.courses = this.course_tmp;
-    this.courses = this.courses.filter(course => course.slug.toLowerCase().includes(event.target.value.toLowerCase()));
+    this.formations = this.formations_tmp;
+    this.formations = this.formations.filter(course => course.slug.toLowerCase().includes(event.target.value.toLowerCase()));
   }
     
-  detailCourse(slug) {
-    this.router.navigate(['/course-content/'+slug])
+  detailFormation(slug) {
+    this.router.navigate(['/formation-view/'+slug])
   }
 }

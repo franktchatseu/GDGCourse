@@ -18,7 +18,7 @@ const routes: Routes = [
   {path:'about-us',component:AboutComponent},
   {path: 'formation-view', component: FormationViewComponent},
   {path:'formation', component: FormationListComponent},
-  { path : 'formation/lecon', component: LeconViewComponent},
+  { path : 'formation-lecon', component: LeconViewComponent},
   {path: '**', redirectTo:''}
 ];
 

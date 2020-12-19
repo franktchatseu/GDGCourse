@@ -1,12 +1,12 @@
 <div class="courses-page">
-    <app-header headerTitle="Course List"></app-header>
+    <app-header headerTitle="{{categorySelected}}"></app-header>
     <div class="container">
         <div class="row">
             <div class="col-12">
                 <div class="breadcrumbs">
                     <ul class="flex flex-wrap align-items-center p-0 m-0">
                         <li><a href="#"><i class="fa fa-home"></i> Home</a></li>
-                        <li>Courses</li>
+                        <li>Blog List</li>
                     </ul>
                 </div><!-- .breadcrumbs -->
             </div><!-- .col -->
@@ -79,7 +79,8 @@
                         <h2>Categories</h2>
 
                         <ul class="p-0 m-0">
-                            <li class="a-cat" (click)="getArticlesByCategories(category.id)"  *ngFor="let category of categories"><a >{{category.title}}</a></li>
+                            <li style="cursor: pointer;" class="a-cat" (click)="getAllCourses(1)" ><a >All</a></li>
+                            <li style="cursor: pointer;" class="a-cat" (click)="getArticlesByCategories(category)"  *ngFor="let category of categories"><a >{{category.title}}</a></li>
                     
                         </ul>
                     </div><!-- .cat-links -->

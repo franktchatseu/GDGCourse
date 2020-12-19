@@ -14,6 +14,7 @@ export class CourseListComponent implements OnInit {
   course_tmp: any = [];
   latestCourses: any = [];
   categories: any;
+  categorySelected: "Blog List"
   urlServer: "http://localhost:8000"
   tags: any
   comments: any
@@ -51,7 +52,7 @@ export class CourseListComponent implements OnInit {
     this.courseService.getPage(page).then(
       (data) => {
 
-        for (var i = 0; i < data.count / 2; i++) {
+        for (var i = 0; i < data.count / 6; i++) {
           this.tablePage[i] = i+1;
           console.log(i)
         }
@@ -62,6 +63,7 @@ export class CourseListComponent implements OnInit {
         this.previousUrl = data.previous
         console.log(this.courses)
         this.pageActive(page)
+        this.categorySelected ="Blog List"
       }
     ).catch(
       (error) => {
@@ -102,10 +104,12 @@ export class CourseListComponent implements OnInit {
     )
   }
   //recuperer les articles par categories
-  getArticlesByCategories(category_id) {
-    this.courseService.articleByCategory(category_id).then(
+  getArticlesByCategories(category) {
+    this.courseService.articleByCategory(category.id).then(
       (data) => {
         this.courses = data
+        this.categorySelected = category.title;
+
       }
     ).catch(
       (error) => {
