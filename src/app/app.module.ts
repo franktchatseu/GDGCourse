@@ -39,7 +39,7 @@ import { LeconViewComponent } from './components/formation/lecon-view/lecon-view
     FormationViewComponent,
     LoginComponent,
     FormationListComponent,
-    LeconViewComponent
+    LeconViewComponent,
   ],
   imports: [
     BrowserModule,
