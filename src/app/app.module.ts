@@ -23,6 +23,8 @@ import { CommentService } from './services/comment.service';
 import { FormationService } from './services/formation.service';
 import { FormationListComponent } from './components/formation/formation-list/formation-list.component';
 import { LeconViewComponent } from './components/formation/lecon-view/lecon-view.component';
+import { BlogViewComponent } from './admin/blog/blog-view/blog-view.component';
+import { AcceuilComponentAdmin } from './admin/acceuil/acceuil.component';
 @NgModule({
   declarations: [
     AppComponent,
@@ -40,6 +42,8 @@ import { LeconViewComponent } from './components/formation/lecon-view/lecon-view
     LoginComponent,
     FormationListComponent,
     LeconViewComponent,
+    BlogViewComponent,
+    AcceuilComponentAdmin
   ],
   imports: [
     BrowserModule,
@@ -49,6 +53,6 @@ import { LeconViewComponent } from './components/formation/lecon-view/lecon-view
     ReactiveFormsModule
   ],
   providers: [CourseService,UserService, CommentService,FormationService],
-  bootstrap: [AppComponent, AcceuilComponent,CourseListComponent,FormationViewComponent,LoginComponent],
+  bootstrap: [AppComponent, AcceuilComponent,CourseListComponent,FormationViewComponent],
 })
 export class AppModule { }
