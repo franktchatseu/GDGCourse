@@ -7,23 +7,9 @@
                   <i class="pe-7s-medal icon-gradient bg-tempting-azure">
                   </i>
               </div>
-              <div>Data Tables
-                  <div class="page-title-subheading">Choose between regular React Bootstrap tables or
-                      advanced dynamic ones.
+              <div>Ajouter Du Contenu 
+                  <div class="page-title-subheading">creer votre article en remplissant le formulaire ci dessous
                   </div>
-              </div>
-          </div>
-          <div class="page-title-actions">
-              <button type="button" data-toggle="tooltip" title="Example Tooltip" data-placement="bottom"
-                  class="btn-shadow mr-3 btn btn-dark">
-                  <i class="fa fa-star"></i>
-              </button>
-              <div class="d-inline-block dropdown">
-                  <button type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"
-                      class="btn-shadow dropdown-toggle btn btn-info">
-                      Ajouter un Blog
-                  </button>
-
               </div>
           </div>
       </div>
@@ -35,21 +21,43 @@
             <div class="col-md-12">
                 <div class="main-card mb-3 card">
                     <div class="card-body">
-                        <form (submit)="onSubmit()" >
+                        <form (submit)="onSubmit()" [formGroup]="blogForm" >
                           <div class="position-relative form-group">
                             <label for="exampleFile" class="">Title</label>
-                            <input name="file" id="exampleFile" type="text" class="form-control"  >
+                            <input name="file" id="exampleFile" type="text" class="form-control" formControlName="title"  >
                         </div>
-                            
-                            <div class="card-body">
+                        <div class="position-relative form-group">
+                              <label for="examplePassword" class="">Categorie Article</label>
+                              <select  class="form-control" formControlName="category" >
+                                <option value="" disabled selected hidden>choose</option>  
+                                <option   >Web Programming </option>
+                                <option   >Mobile Programming </option>
+                                <option   >Data Science </option>
+                                <option   >SPring Boot </option>
+                              </select>
+                          </div>
+                          <div class="position-relative form-group">
+                              <label for="exampleFile" class="">Image Couverture</label>
+                              <input name="file" id="exampleFile" type="text" placeholder="entrer url de image" class="form-control" formControlName="image" >
+                          </div>
+                          <div class="position-relative form-group">
+                              <label for="exampleDescription" class=""> Description </label>
+                              <textarea name="text" id="exampleDescription" placeholder="entrer une mini description de article" class="form-control"  formControlName="description" >
+
+                              </textarea>
+                          </div>
                               <div class="row">
                                   <div class="col-md-12" >
-                                      <ckeditor [editor]="Editor" data=""  name="content" id="editor">
+                                    <label for="editor" class=""> Saisir le contenu de l'article </label>
+                                      <ckeditor [editor]="Editor" data=""  name="content" id="editor" formControlName="body" >
                                       </ckeditor>
                                   </div>
                               </div>
-                          </div>
-                           
+                              <div class="row">
+                                    <div class="col-md-4" >
+                                          <button type="submit" class="btn btn-success" [disabled]="this.blogForm.invalid">Ajouter Article</button>
+                                    </div>
+                                </div>
                         </form>
                     </div>
                 </div>
