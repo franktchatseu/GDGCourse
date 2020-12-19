@@ -5,6 +5,7 @@ import { AboutComponent } from './components/about/about.component';
 import { AcceuilComponent } from './components/acceuil/acceuil.component';
 import { AcceuilComponentAdmin } from './admin/acceuil/acceuil.component';
 
+import { ContactComponent } from './components/contact/contact.component';
 import { CourseDetailComponent } from './components/course/course-detail/course-detail.component';
 import { CourseListComponent } from './components/course/course-list/course-list.component';
 import { FormationListComponent } from './components/formation/formation-list/formation-list.component';
@@ -23,13 +24,14 @@ const routes: Routes = [
   {path: 'formation-view', component: FormationViewComponent},
   {path:'formation', component: FormationListComponent},
   { path : 'formation-lecon', component: LeconViewComponent},
+  { path: 'contact-us', component: ContactComponent },
+
   // les differents routes pour la partie administration
   {path:'admin', component: AcceuilComponentAdmin},
   {path:'admin/login', component:LoginComponent},
   {path: 'admin/blog-add', component: BlogAddComponent},
   {path: 'admin/blog-list',component: BlogViewComponent},
   {path: '**', redirectTo:''},
-
 ];
 
 @NgModule({

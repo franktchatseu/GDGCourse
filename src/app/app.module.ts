@@ -27,6 +27,7 @@ import { BlogViewComponent } from './admin/blog/blog-view/blog-view.component';
 import { AcceuilComponentAdmin } from './admin/acceuil/acceuil.component';
 import { BlogAddComponent } from './admin/blog/blog-add/blog-add.component';
 import { CKEditorModule } from '@ckeditor/ckeditor5-angular';
+import { ContactComponent } from './components/contact/contact.component';
 @NgModule({
   declarations: [
     AppComponent,
@@ -46,7 +47,8 @@ import { CKEditorModule } from '@ckeditor/ckeditor5-angular';
     LeconViewComponent,
     BlogViewComponent,
     AcceuilComponentAdmin,
-    BlogAddComponent
+    BlogAddComponent,
+    ContactComponent
   ],
   imports: [
     BrowserModule,
