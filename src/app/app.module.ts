@@ -25,6 +25,8 @@ import { FormationListComponent } from './components/formation/formation-list/fo
 import { LeconViewComponent } from './components/formation/lecon-view/lecon-view.component';
 import { BlogViewComponent } from './admin/blog/blog-view/blog-view.component';
 import { AcceuilComponentAdmin } from './admin/acceuil/acceuil.component';
+import { BlogAddComponent } from './admin/blog/blog-add/blog-add.component';
+import { CKEditorModule } from '@ckeditor/ckeditor5-angular';
 @NgModule({
   declarations: [
     AppComponent,
@@ -43,14 +45,17 @@ import { AcceuilComponentAdmin } from './admin/acceuil/acceuil.component';
     FormationListComponent,
     LeconViewComponent,
     BlogViewComponent,
-    AcceuilComponentAdmin
+    AcceuilComponentAdmin,
+    BlogAddComponent
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     HttpClientModule,
     FormsModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    CKEditorModule,
+
   ],
   providers: [CourseService,UserService, CommentService,FormationService],
   bootstrap: [AppComponent, AcceuilComponent,CourseListComponent,FormationViewComponent],

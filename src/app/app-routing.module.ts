@@ -10,6 +10,8 @@ import { CourseListComponent } from './components/course/course-list/course-list
 import { FormationListComponent } from './components/formation/formation-list/formation-list.component';
 import { FormationViewComponent } from './components/formation/formation-view/formation-view.component';
 import { LeconViewComponent } from './components/formation/lecon-view/lecon-view.component';
+import { BlogAddComponent } from './admin/blog/blog-add/blog-add.component';
+import { BlogViewComponent } from './admin/blog/blog-view/blog-view.component';
 
 
 const routes: Routes = [
@@ -24,6 +26,8 @@ const routes: Routes = [
   // les differents routes pour la partie administration
   {path:'admin', component: AcceuilComponentAdmin},
   {path:'admin/login', component:LoginComponent},
+  {path: 'admin/blog-add', component: BlogAddComponent},
+  {path: 'admin/blog-list',component: BlogViewComponent},
   {path: '**', redirectTo:''},
 
 ];
