@@ -16,7 +16,7 @@ import { HeaderComponent } from './components/header/header.component';
 import { CourseDetailComponent } from './components/course/course-detail/course-detail.component';
 import { AboutComponent } from './components/about/about.component';
 import { FormationViewComponent } from './components/formation/formation-view/formation-view.component';
-import { HttpClientModule} from '@angular/common/http';
+import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { LoginComponent } from './admin/login/login.component';
 import { CommentService } from './services/comment.service';
@@ -28,6 +28,7 @@ import { AcceuilComponentAdmin } from './admin/acceuil/acceuil.component';
 import { BlogAddComponent } from './admin/blog/blog-add/blog-add.component';
 import { CKEditorModule } from '@ckeditor/ckeditor5-angular';
 import { ContactComponent } from './components/contact/contact.component';
+import { AddTokenInterceptor } from './_http-interceptors/add-token.interceptor';
 @NgModule({
   declarations: [
     AppComponent,
@@ -59,7 +60,9 @@ import { ContactComponent } from './components/contact/contact.component';
     CKEditorModule,
 
   ],
-  providers: [CourseService,UserService, CommentService,FormationService],
-  bootstrap: [AppComponent, AcceuilComponent,CourseListComponent,FormationViewComponent],
+  providers: [CourseService, UserService, CommentService, FormationService,
+    { provide: HTTP_INTERCEPTORS, useClass: AddTokenInterceptor, multi: true },
+  ],
+  bootstrap: [AppComponent, AcceuilComponent, CourseListComponent, FormationViewComponent],
 })
 export class AppModule { }
