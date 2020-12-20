@@ -135,4 +135,12 @@ export class CourseDetailComponent implements OnInit {
     this.commentEmail = "";
     this.commentBody = ""
   }
+  navigate(slug){
+    this.getCourse(slug)
+    //related course
+    //this.getLastestCourse()
+    //recuperatiion des commentaires pour cet article
+
+    //this.AllCommentByArticle("firebase-authentificaiton")
+  }
 }

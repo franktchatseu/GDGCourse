@@ -1,5 +1,5 @@
 <div class="single-blog-post">
-    <app-header headerTitle="Blog List"></app-header>
+    <app-header headerTitle="{{this.course.title}}"></app-header>
     <div class="container-fluid">
 
         <div class="row">
@@ -43,12 +43,11 @@
                             <h2>Latest Courses</h2>
 
                             <ul class="p-0 m-0">
-                                <li [routerLink]="['/course-content',course.slug]"  class="flex flex-wrap justify-content-between align-items-center"
+                                <li (click)="navigate(course.slug)" style="cursor: pointer;"  class="flex flex-wrap justify-content-between align-items-center"
                                     *ngFor="let course of relatedCourses" >
-                                    <img [src]="course.banner"  alt="">
-
+                                    <img [src]="course.banner"  alt="" >
                                     <div class="content-wrap">
-                                        <h3><a href="#">{{course.title}}</a></h3>
+                                        <h3><a >{{course.title}}</a></h3>
 
                                         <div class="course-cost free-cost">{{course.user}}</div>
                                     </div><!-- .content-wrap -->
