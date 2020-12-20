@@ -43,14 +43,14 @@
                             <h2>Latest Courses</h2>
 
                             <ul class="p-0 m-0">
-                                <li class="flex flex-wrap justify-content-between align-items-center"
-                                    *ngFor="let course of relatedCourses">
-                                    <img [src]="course.image" alt="">
+                                <li [routerLink]="['/course-content',course.slug]"  class="flex flex-wrap justify-content-between align-items-center"
+                                    *ngFor="let course of relatedCourses" >
+                                    <img [src]="course.banner"  alt="">
 
                                     <div class="content-wrap">
                                         <h3><a href="#">{{course.title}}</a></h3>
 
-                                        <div class="course-cost free-cost">Official</div>
+                                        <div class="course-cost free-cost">{{course.user}}</div>
                                     </div><!-- .content-wrap -->
                                 </li>
                             </ul>
@@ -95,7 +95,7 @@
                 </div><!-- .author-box -->
                 <div class="post-comments-wrap">
                     <div class="post-comments">
-                        <h3 class="comments-title"><span class="comments-number">{{this.commentCourses.length}} Comments</span></h3>
+                        <h3 *ngIf ="this.commentCourses" class="comments-title"><span class="comments-number">{{this.commentCourses.length}} Comments</span></h3>
 
                         <ol class="comment-list">
                             <li class="comment" *ngFor="let comment of this.commentCourses">

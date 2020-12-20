@@ -1,5 +1,7 @@
 import { Component, Input, OnInit } from '@angular/core';
+import { ActivatedRoute } from '@angular/router';
 import { FormationService } from 'src/app/services/formation.service';
+import { UserService } from 'src/app/services/user.service';
 
 @Component({
   selector: 'app-formation-view',
@@ -9,9 +11,12 @@ import { FormationService } from 'src/app/services/formation.service';
 export class FormationViewComponent implements OnInit {
 
   @Input()
-  formation: any;
+  formation: any
+  user: any
   constructor(
-    private formationService: FormationService
+    private formationService: FormationService,
+    private userService: UserService,
+    private route:ActivatedRoute
   ) { }
 
   ngOnInit() {
@@ -57,16 +62,33 @@ export class FormationViewComponent implements OnInit {
       ]
 
     }
+    const formationSlug = this.route.snapshot.paramMap.get("slug");
+
+    this.getFormation(formationSlug)
   }
 
   getFormation(slug) {
     this.formationService.findFormation(slug).then(
       (data) => {
         this.formation = data
+        this.getUser(1)
       },
-      (error) => {
+      (error) => {this.formation.user
         console.log(error)
       }
     )
   }
+
+    //fonction qui retourne un user
+    getUser(user_id) {
+      this.userService.find(user_id).then(
+        (data) => {
+          this.user = data
+          console.log(this.user)
+        },
+        (error) => {
+          console.log(error)
+        }
+      )
+    }
 }

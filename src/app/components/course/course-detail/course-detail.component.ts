@@ -28,57 +28,18 @@ export class CourseDetailComponent implements OnInit {
   ) { }
 
   ngOnInit() {
-    this.relatedCourses = [
-      {
-        image: "assets/images/1.jpg",
-        title: "The Complete Android Developer Course",
-        author: "Frank Tchatseu",
-        date: new Date()
-      },
-      {
-        image: "assets/images/2.jpg",
-        title: "Hacking Ethique",
-        author: "Ngounou Loic",
-        date: new Date()
-      },
-      {
-        image: "assets/images/3.jpg",
-        title: "Formation Flutter",
-        author: "Rousvel",
-        date: new Date()
-      },
-      {
-        image: "assets/images/4.jpg",
-        title: "Learn Phyton",
-        author: "Luc Luc",
-        date: new Date()
-      },
-      {
-        image: "assets/images/5.jpg",
-        title: "Learn Angular",
-        author: "Abdel Abdel",
-        date: new Date()
-      },
-      {
-        image: "assets/images/1.jpg",
-        title: "Les bases en securite informatique",
-        author: "Tchamou Ramses",
-        date: new Date()
-      },
-    ];
-
+   
     
     const course_slug = this.route.snapshot.paramMap.get("slug");
     this.getCourse(course_slug)
-
     //related course
-    this.getRelatedCourse(1)
+    this.getLastestCourse()
     //recuperatiion des commentaires pour cet article
 
-    this.AllCommentByArticle(course_slug)
+    this.AllCommentByArticle("firebase-authentificaiton")
     //RECUP USER
     //console.log(this.course.user_id)
-    this.getUser(1)
+    //this.getUser(this.course.user_id)
   }
 
   getCourse(course_slug) {
@@ -86,6 +47,7 @@ export class CourseDetailComponent implements OnInit {
       (data) => {
         this.course = data;
         console.log(this.course)
+        this.getUser(this.course.user_id)
       }
     ).catch(
       (error) => {
@@ -125,6 +87,7 @@ export class CourseDetailComponent implements OnInit {
     this.commentService.allCommentByCourse(course_slug).then(
       (data) => {
         this.commentCourses = data.comment
+        console.log(this.commentCourses)
       },
       (error) => {
         console.log(error)
@@ -149,6 +112,19 @@ export class CourseDetailComponent implements OnInit {
       },
       (error) => {
         console.log(error)
+      }
+    )
+  }
+
+  getLastestCourse() {
+    this.courseService.lastestCourse().then(
+      (data) => {
+        this.relatedCourses = data;
+        console.log(this.relatedCourses)
+      }
+    ).catch(
+      (error) => {
+        console.log(error);
       }
     )
   }

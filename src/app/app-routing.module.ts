@@ -21,7 +21,7 @@ const routes: Routes = [
   {path:'course-list',component:CourseListComponent},
   {path:'course-content/:slug',component:CourseDetailComponent},
   {path:'about-us',component:AboutComponent},
-  {path: 'formation-view', component: FormationViewComponent},
+  {path: 'formation-view/:slug', component: FormationViewComponent},
   {path:'formation', component: FormationListComponent},
   { path : 'formation-lecon', component: LeconViewComponent},
   { path: 'contact-us', component: ContactComponent },

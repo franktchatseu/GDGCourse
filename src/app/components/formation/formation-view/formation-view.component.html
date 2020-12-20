@@ -90,7 +90,7 @@
 
                         <div class="instructor-short-info flex flex-wrap">
                             <div class="instructors-stats">
-                                <img src="assets/images/instructor.jpg" alt="">
+                                <img src="{{this.user.image}}" alt="">
 
                                 <ul class="p-0 m-0 mt-3">
                                    <li><i class="fa fa-star"></i> Redactor</li>
@@ -98,25 +98,18 @@
                             </div><!-- .instructors-stats -->
 
                             <div class="instructors-details">
-                                <h2 class="entry-title mt-3">{{this.formation.title}}</h2>
 
                                 <div class="course-teacher mt-3">
-                                    Teacher: <a href="#">{{this.formation.user}}</a>
+                                    Teacher: <a href="#">{{this.user.name}}</a>
                                 </div><!-- .course-teacher -->
 
                                 <div class="entry-content mt-3">
-                                    <p>Hi! I'm Colt. I'm a developer with a serious love for teaching. I've spent the last few years teaching people to program at 2 different immersive bootcamps where I've helped hundreds of people become web developers and change their lives. My graduates work at companies like Google, Salesforce, and Square.</p>
+                                    <p>{{this.user.description}}</p>
                                 </div><!-- .entry-content -->
                             </div><!-- .instructors-details -->
                         </div><!-- .instructor-short-info -->
                     </div><!-- .instructors-info -->
-                    <div class="pagination flex flex-wrap justify-content-between align-items-center">
-                        <div class="col-12 col-lg-12 order-2 order-lg-1 mt-3 mt-lg-0">
-                            <button class="btn btn-success" style="float: left;"><i class="fa fa-angle-left "></i> Lecon Precedente</button>
-
-                            <button class="btn btn-success" style="float: right;">Lecon Suivante <i class="fa fa-angle-right"></i></button>
-                        </div>
-                    </div><!-- .pagination -->
+             
                 </div><!-- .single-course-wrap -->
             </div><!-- .col -->
         </div><!-- .row -->

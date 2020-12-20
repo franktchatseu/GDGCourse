@@ -23,7 +23,7 @@ export class FormationService {
   
   //methode qui retourne les data à partir d'une page
   getPage(page): Promise<any> {
-    const url = Routes.BLOG+'?page='+page
+    const url = Routes.FORMATION+'?page='+page
     return this.http.get<any>(url).toPromise();
   }
    //methode qui retourne les data à partir de url
