@@ -1,5 +1,5 @@
 import { Component, Input, OnInit } from '@angular/core';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { FormationService } from 'src/app/services/formation.service';
 import { UserService } from 'src/app/services/user.service';
 
@@ -12,23 +12,19 @@ export class FormationViewComponent implements OnInit {
 
   @Input()
   formation: any
+  lecons: any
   user: any
   constructor(
     private formationService: FormationService,
     private userService: UserService,
-    private route:ActivatedRoute
+    private route:ActivatedRoute,
+    private router: Router
   ) { }
 
   ngOnInit() {
 
     //recuperation de la formation$
-    this.formation = {
-      user: "Frank Tchatseu",
-      category : "Web",
-      description: "il s'agit d'une tres bonne formation",
-      whyLearn: "Learn C++, the games industry standard language Develop strong and transferrable problem solving skills. Gain an excellent knowledge of modern game development. ",
-      requirement: "Base en HTML et JAVAscipt",
-      lecons:[
+      this.lecons=[
         {
           title: "Introduction au Html",
           slug : "intor",
@@ -60,8 +56,6 @@ export class FormationViewComponent implements OnInit {
 
         },
       ]
-
-    }
     const formationSlug = this.route.snapshot.paramMap.get("slug");
 
     this.getFormation(formationSlug)
@@ -90,5 +84,9 @@ export class FormationViewComponent implements OnInit {
           console.log(error)
         }
       )
+    }
+
+    detailLecon(){
+      this.router.navigate(["/formation/lecon","firebase-authentificaiton"])
     }
 }

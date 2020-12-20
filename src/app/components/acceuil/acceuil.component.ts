@@ -19,7 +19,8 @@ export class AcceuilComponent implements OnInit {
   ngOnInit() {
     this.getAllCategories()
     this.getAllCourses(1)
-  }page
+    this.getLastestCourse()
+  }
 
   //methode de la classe course
   getAllCourses(page) {
@@ -63,4 +64,17 @@ export class AcceuilComponent implements OnInit {
       }
     )
   }
+    //recuperation de toutes les categories
+    getLastestCourse() {
+      this.courseService.lastestCourse().then(
+        (data) => {
+          this.latestCourses = data;
+          console.log(this.latestCourses)
+        }
+      ).catch(
+        (error) => {
+          console.log(error);
+        }
+      )
+    }
 }
