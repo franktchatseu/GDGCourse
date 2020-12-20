@@ -44,9 +44,8 @@ export class CourseService {
   }
 
   //recuperation des articles par categorie
-  articleByCategory(category_id: number): Promise<any> {
-    const url = Routes.BLOG+'category'
-    return this.http.get<any>(`${url}/${category_id}`).toPromise();
+  articleByCategory(category): Promise<any> {
+    return this.http.get<any>(`${Routes.CATEGORY}/${category}`).toPromise();
   }
   
   allCategory(){

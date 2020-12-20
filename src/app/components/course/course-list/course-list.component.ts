@@ -105,9 +105,9 @@ export class CourseListComponent implements OnInit {
   }
   //recuperer les articles par categories
   getArticlesByCategories(category) {
-    this.courseService.articleByCategory(category.id).then(
+    this.courseService.articleByCategory(category.title).then(
       (data) => {
-        this.courses = data
+        this.courses = data.posts
         this.categorySelected = category.title;
 
       }
