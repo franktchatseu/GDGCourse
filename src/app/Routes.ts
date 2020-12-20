@@ -13,3 +13,4 @@ export const RESPONSE = SERVER + 'blog/post/response/';
 export const USER = SERVER + 'account/auth/profile';
 export const FORMATION = SERVER + 'blog/formation';
 export const LECON = SERVER + 'lecon/';
+export const EVENT = SERVER + 'events/event';

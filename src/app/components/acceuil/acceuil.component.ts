@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { CourseService } from 'src/app/services/course.service';
+import { EventService } from 'src/app/services/event.service';
 
 @Component({
   selector: 'app-acceuil',
@@ -12,14 +13,18 @@ export class AcceuilComponent implements OnInit {
   course_tmp: any = [];
   latestCourses: any = [];
   categories: any;
+  priorityEvent: any
+  ortherEvents: any[]
   constructor(
-    private courseService: CourseService
+    private courseService: CourseService,
+    private eventService: EventService
   ) { }
 
   ngOnInit() {
     this.getAllCategories()
     this.getAllCourses(1)
     this.getLastestCourse()
+    this.getNewEvents()
   }
 
   //methode de la classe course
@@ -77,4 +82,16 @@ export class AcceuilComponent implements OnInit {
         }
       )
     }
+       //recuperation de tous les evenements
+       getNewEvents() {
+        this.eventService.NewEvent().then(
+          (data) => {
+            this.ortherEvents = data.results;
+          }
+        ).catch(
+          (error) => {
+            console.log(error);
+          }
+        )
+      }
 }
