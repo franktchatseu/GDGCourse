@@ -34,12 +34,6 @@ export class CourseDetailComponent implements OnInit {
     this.getCourse(course_slug)
     //related course
     this.getLastestCourse()
-    //recuperatiion des commentaires pour cet article
-
-    this.AllCommentByArticle("firebase-authentificaiton")
-    //RECUP USER
-    //console.log(this.course.user_id)
-    //this.getUser(this.course.user_id)
   }
 
   getCourse(course_slug) {
@@ -48,6 +42,7 @@ export class CourseDetailComponent implements OnInit {
         this.course = data;
         console.log(this.course)
         this.getUser(this.course.user_id)
+        this.AllCommentByArticle(this.course.slug)
       }
     ).catch(
       (error) => {
