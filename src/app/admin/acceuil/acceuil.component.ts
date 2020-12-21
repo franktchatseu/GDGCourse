@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
+import { AuthService } from 'src/app/services/auth.service';
 
 @Component({
   selector: 'app-acceuil',
@@ -8,11 +10,23 @@ import { Component, OnInit } from '@angular/core';
 export class AcceuilComponentAdmin implements OnInit {
 
   scriptUrl: any
-  constructor() { }
+  user: any
+  token: any
+  constructor(
+    private authService: AuthService,
+    private router: Router
+  ) { }
 
   ngOnInit() {
     this.scriptUrl = "../../../assets/admin/js/main.js"
     this.loadScript()
+
+    //recuperation du user
+    this.user = this.authService.getUser()
+    this.token = this.authService.getToken()
+    if(!this.user || !this.token){
+      this.router.navigate(["/admin/login"])
+    }
   }
 
   public loadScript() {
@@ -23,6 +37,11 @@ export class AcceuilComponentAdmin implements OnInit {
     node.async = true;
     node.charset = 'utf-8';
     document.getElementsByTagName('head')[0].appendChild(node);
+  }
+
+  logout(){
+    localStorage.clear()
+    this.router.navigate(["/admin/login"])
   }
 
 }

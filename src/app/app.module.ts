@@ -1,5 +1,6 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
@@ -29,6 +30,8 @@ import { BlogAddComponent } from './admin/blog/blog-add/blog-add.component';
 import { CKEditorModule } from '@ckeditor/ckeditor5-angular';
 import { ContactComponent } from './components/contact/contact.component';
 import { AddTokenInterceptor } from './_http-interceptors/add-token.interceptor';
+import { NotifService } from './services/notif.service';
+import { ToastrModule } from 'ngx-toastr';
 @NgModule({
   declarations: [
     AppComponent,
@@ -58,9 +61,12 @@ import { AddTokenInterceptor } from './_http-interceptors/add-token.interceptor'
     FormsModule,
     ReactiveFormsModule,
     CKEditorModule,
+    ToastrModule.forRoot(),
+    BrowserAnimationsModule
+
 
   ],
-  providers: [CourseService, UserService, CommentService, FormationService,
+  providers: [CourseService, UserService, CommentService, FormationService,NotifService,
     { provide: HTTP_INTERCEPTORS, useClass: AddTokenInterceptor, multi: true },
   ],
   bootstrap: [AppComponent, AcceuilComponent, CourseListComponent, FormationViewComponent],

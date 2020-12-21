@@ -558,7 +558,7 @@
                                   <div class="btn-group">
                                       <a data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"
                                           class="p-0 btn">
-                                          <img width="42" class="rounded-circle" src="assets/admin/images/avatars/1.jpg"
+                                          <img width="42" class="rounded-circle" src="{{this.user.image}}"
                                               alt="">
                                           <i class="fa fa-angle-down ml-2 opacity-8"></i>
                                       </a>
@@ -574,17 +574,16 @@
                                                           <div class="widget-content-wrapper">
                                                               <div class="widget-content-left mr-3">
                                                                   <img width="42" class="rounded-circle"
-                                                                      src="assets/admin/images/avatars/1.jpg" alt="">
+                                                                      src="{{this.user.image}}" alt="">
                                                               </div>
                                                               <div class="widget-content-left">
-                                                                  <div class="widget-heading">Alina Mcloughlin
+                                                                  <div class="widget-heading">{{this.user.name}}
                                                                   </div>
-                                                                  <div class="widget-subheading opacity-8">A short profile
-                                                                      description
+                                                                  <div class="widget-subheading opacity-8">{{this.user.description}}
                                                                   </div>
                                                               </div>
                                                               <div class="widget-content-right mr-2">
-                                                                  <button
+                                                                  <button (click)="logout()"
                                                                       class="btn-pill btn-shadow btn-shine btn btn-focus">Logout
                                                                   </button>
                                                               </div>
@@ -615,10 +614,10 @@
                               </div>
                               <div class="widget-content-left  ml-3 header-user-info">
                                   <div class="widget-heading">
-                                      Frank Tchatseu
+                                      {{this.user.name}}
                                   </div>
                                   <div class="widget-subheading">
-                                      DataScience
+                                      {{this.user.email}}
                                   </div>
                               </div>
                           </div>
@@ -2344,7 +2343,7 @@
                               </a>
                               <ul>
                                   <li>
-                                      <a href="pages-login.html">
+                                      <a [routerLink]="['/admin/blog-list']">
                                           <i class="metismenu-icon"></i>
                                           My Articles
                                       </a>
@@ -2445,7 +2444,7 @@
           </div>
           <div class="app-main__outer">
               <div class="app-main__inner">
-                  <app-blog-add></app-blog-add>
+                  <app-blog-view></app-blog-view>
               </div>
   
           </div>

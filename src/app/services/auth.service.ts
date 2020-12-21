@@ -16,13 +16,8 @@ export class AuthService {
       private router: Router
     ) { }
 
-  login(login: string, password: string, keepMeLoggedIn: boolean): Promise<any> {
-        let datas = {
-            'login': login,
-            'password': password,
-            'remember_me': keepMeLoggedIn
-        }
-        return this.http.post<any>(Routes.LOGIN, datas).toPromise();
+  login(user): Promise<any> {
+        return this.http.post<any>(Routes.LOGIN, user).toPromise();
     }
 
     isAuthenticated(){
