@@ -16,6 +16,7 @@ export class LoginComponent implements OnInit {
   unknowError = false;
   isLoading = false;
   notLogged = false;
+  //
   isLoginError = false;
   isLoginSuccess = false;
   keepMeLoggedIn = false;
