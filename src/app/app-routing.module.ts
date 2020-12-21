@@ -27,10 +27,20 @@ const routes: Routes = [
   { path: 'contact-us', component: ContactComponent },
 
   // les differents routes pour la partie administration
-  {path:'admin', component: AcceuilComponentAdmin},
+  {
+    path: 'admin',component: AcceuilComponentAdmin,
+    children: [
+      {
+        path: 'blog-add',
+        component: BlogAddComponent, outlet:'admin'
+      },
+      {
+        path: 'blog-list',
+        component: BlogViewComponent,outlet:'admin'
+      },
+    ]
+  },
   {path:'admin/login', component:LoginComponent},
-  {path: 'admin/blog-add', component: BlogAddComponent},
-  {path: 'admin/blog-list',component: BlogViewComponent},
   {path: '**', redirectTo:''},
 ];
 

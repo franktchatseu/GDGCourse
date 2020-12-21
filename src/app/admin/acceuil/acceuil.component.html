@@ -2343,7 +2343,7 @@
                               </a>
                               <ul>
                                   <li>
-                                      <a [routerLink]="['/admin/blog-list']">
+                                      <a [routerLink]="['/admin',{outlets:{'admin':'blog-list'}}]">
                                           <i class="metismenu-icon"></i>
                                           My Articles
                                       </a>
@@ -2444,7 +2444,7 @@
           </div>
           <div class="app-main__outer">
               <div class="app-main__inner">
-                  <app-blog-view></app-blog-view>
+                  <router-outlet  name="admin"></router-outlet>
               </div>
   
           </div>
