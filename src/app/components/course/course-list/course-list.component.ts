@@ -11,7 +11,7 @@ import { UserService } from 'src/app/services/user.service';
 export class CourseListComponent implements OnInit {
 
   courses: any = [];
-  course_tmp: any = [];
+  course_tmp: any = []; //
   latestCourses: any = [];
   categories: any;
   categorySelected: "Blog List"
