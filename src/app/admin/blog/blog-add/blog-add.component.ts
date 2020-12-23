@@ -1,6 +1,7 @@
 import { formatDate } from '@angular/common';
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { Router } from '@angular/router';
 import * as ClassicEditor from '@ckeditor/ckeditor5-build-classic';
 import { AuthService } from 'src/app/services/auth.service';
 import { CourseService } from 'src/app/services/course.service';
@@ -14,15 +15,20 @@ export class BlogAddComponent implements OnInit {
   public Editor = ClassicEditor ;
   public blogForm : FormGroup
   user : any
+  //recuperation de toutes les categories
+  categories :  any
   constructor(
     private formBuilder: FormBuilder,
     private blogServive : CourseService,
-    private authService : AuthService
+    private authService : AuthService,
+    private courseService: CourseService,
+    private router: Router
   ) { }
 
   ngOnInit() {
     this.initForm()
     this.user = this.authService.getUser()
+    this.getAllCategories()
   }
 
   initForm(){
@@ -44,20 +50,36 @@ export class BlogAddComponent implements OnInit {
     const formData = new FormData()
     formData.append('title',this.form.title.value)
     formData.append('description',this.form.description.value)
-    formData.append('category',"1")
+    formData.append('category',this.form.category.value)
     formData.append('body', this.form.body.value)
     formData.append('banner', this.form.image.value)
-    formData.append('user_id',this.user.id)
+    formData.append('user',this.user.id)
     //creation 
     this.blogServive.create(formData).then(
       (data)=>{
         console.log(data)
+        alert("ajout de article reussi avec success")
+        this.router.navigate(['/admin',{outlets:{'admin':'blog-list'}}])
       },
       (error)=>{
         console.log(error)
-        console.log("echec ajout de article")
+        alert("echec ajout de article")
       }
     )
 
+  }
+
+   //recuperation de toutes les categories
+   getAllCategories() {
+    this.courseService.allCategory().then(
+      (data) => {
+        this.categories = data;
+        console.log(this.categories)
+      }
+    ).catch(
+      (error) => {
+        console.log(error);
+      }
+    )
   }
 }

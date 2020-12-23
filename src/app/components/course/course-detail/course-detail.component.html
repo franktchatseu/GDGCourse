@@ -96,7 +96,7 @@
                     <div class="post-comments">
                         <h3 *ngIf ="this.commentCourses" class="comments-title"><span class="comments-number">{{this.commentCourses.length}} Comments</span></h3>
 
-                        <ol class="comment-list">
+                        <ol class="comment-list" *ngIf ="this.commentCourses">
                             <li class="comment" *ngFor="let comment of this.commentCourses">
                                 <article class="comment-body">
                                     <figure class="comment-author-avatar">

@@ -21,7 +21,7 @@ export class CourseService {
     return this.http.get<any>(url).toPromise();
   }
   create(formData: FormData): Promise<any> {
-    return this.http.post<any>(Routes.BLOG, formData).toPromise();
+    return this.http.post<any>(Routes.POSTCREATE, formData).toPromise();
   }
 
 

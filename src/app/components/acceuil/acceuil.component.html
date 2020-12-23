@@ -184,9 +184,9 @@
       </div><!-- .col -->
 
       <div class="col-12 col-lg-6" *ngFor="let latest of latestCourses">
-        <div class="course-content flex flex-wrap justify-content-between align-content-lg-stretch">
+        <div style="cursor: pointer;" [routerLink]="['/course-content',latest.slug]" class="course-content flex flex-wrap justify-content-between align-content-lg-stretch">
           <figure class="course-thumbnail">
-            <a href="#"><img src="{{latest.banner}}" alt=""></a>
+            <a ><img src="{{latest.banner}}" alt=""></a>
           </figure><!-- .course-thumbnail -->
 
           <div class="course-content-wrap course-ratings-count">

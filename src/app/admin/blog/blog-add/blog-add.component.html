@@ -1,68 +1,69 @@
+<div class="app-page-title">
+    <div class="page-title-wrapper">
+        <div class="page-title-heading">
+            <div class="page-title-icon">
+                <i class="pe-7s-medal icon-gradient bg-tempting-azure">
+                </i>
+            </div>
+            <div>Ajouter Du Contenu
+                <div class="page-title-subheading">creer votre article en remplissant le formulaire ci dessous
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="main-card mb-3 card">
+    <div class="card-body">
 
-  
-  <div class="app-page-title">
-      <div class="page-title-wrapper">
-          <div class="page-title-heading">
-              <div class="page-title-icon">
-                  <i class="pe-7s-medal icon-gradient bg-tempting-azure">
-                  </i>
-              </div>
-              <div>Ajouter Du Contenu 
-                  <div class="page-title-subheading">creer votre article en remplissant le formulaire ci dessous
-                  </div>
-              </div>
-          </div>
-      </div>
-  </div>
-  <div class="main-card mb-3 card">
-      <div class="card-body" >
-
-          <div class="row">
+        <div class="row">
             <div class="col-md-12">
                 <div class="main-card mb-3 card">
                     <div class="card-body">
-                        <form (submit)="onSubmit()" [formGroup]="blogForm" >
-                          <div class="position-relative form-group">
-                            <label for="exampleFile" class="">Title</label>
-                            <input name="file" id="exampleFile" type="text" class="form-control" formControlName="title"  >
-                        </div>
-                        <div class="position-relative form-group">
-                              <label for="examplePassword" class="">Categorie Article</label>
-                              <select  class="form-control" formControlName="category" >
-                                <option value="" disabled selected hidden>choose</option>  
-                                <option   >Web Programming </option>
-                                <option   >Mobile Programming </option>
-                                <option   >Data Science </option>
-                                <option   >SPring Boot </option>
-                              </select>
-                          </div>
-                          <div class="position-relative form-group">
-                              <label for="exampleFile" class="">Image Couverture</label>
-                              <input name="file" id="exampleFile" type="text" placeholder="entrer url de image" class="form-control" formControlName="image" >
-                          </div>
-                          <div class="position-relative form-group">
-                              <label for="exampleDescription" class=""> Description </label>
-                              <textarea name="text" id="exampleDescription" placeholder="entrer une mini description de article" class="form-control"  formControlName="description" >
+                        <form (submit)="onSubmit()" [formGroup]="blogForm">
+                            <div class="position-relative form-group">
+                                <label for="exampleFile" class="">Title</label>
+                                <input name="file" id="exampleFile" type="text" class="form-control"
+                                    formControlName="title">
+                            </div>
+                            <div class="position-relative form-group">
+                                <label for="examplePassword" class="">Categorie Article</label>
+                                <select class="form-control" formControlName="category"
+                                    *ngFor="let category of this.categories">
+                                    <option value="" disabled selected hidden>choose</option>
+                                    <option value="{{category.id}}">{{category.title}}</option>
+                                </select>
+                            </div>
+                            <div class="position-relative form-group">
+                                <label for="exampleFile" class="">Image Couverture</label>
+                                <input name="file" id="exampleFile" type="text" placeholder="entrer url de image"
+                                    class="form-control" formControlName="image">
+                            </div>
+                            <div class="position-relative form-group">
+                                <label for="exampleDescription" class=""> Description </label>
+                                <textarea name="text" id="exampleDescription"
+                                    placeholder="entrer une mini description de article" class="form-control"
+                                    formControlName="description">
 
                               </textarea>
-                          </div>
-                              <div class="row">
-                                  <div class="col-md-12" >
+                            </div>
+                            <div class="row">
+                                <div class="col-md-12">
                                     <label for="editor" class=""> Saisir le contenu de l'article </label>
-                                      <ckeditor [editor]="Editor" data=""  name="content" id="editor" formControlName="body" >
-                                      </ckeditor>
-                                  </div>
-                              </div>
-                              <div class="row">
-                                    <div class="col-md-4" >
-                                          <button type="submit" class="btn btn-success m-2" [disabled]="this.blogForm.invalid">Ajouter Article</button>
-                                    </div>
+                                    <ckeditor [editor]="Editor" data="" name="content" id="editor"
+                                        formControlName="body">
+                                    </ckeditor>
                                 </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-md-4">
+                                    <button type="submit" class="btn btn-success m-2"
+                                        [disabled]="this.blogForm.invalid">Ajouter Article</button>
+                                </div>
+                            </div>
                         </form>
                     </div>
                 </div>
             </div>
         </div>
-      </div>
-  </div>
-  
+    </div>
+</div>

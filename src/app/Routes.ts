@@ -5,6 +5,7 @@ export const LOGIN = SERVER + 'account/auth/login/';
 export const UPDATE_PASSWORD = SERVER + 'auth/updatepassword';
 
 export const BLOG = SERVER + 'blog/post';
+export const POSTCREATE = SERVER + 'blog/post/create/';
 export const LASTESTBLOG = SERVER + 'blog/post/recent';
 export const CATEGORY = SERVER + 'blog/category';
 export const TAG = SERVER + 'blog/tag/';
