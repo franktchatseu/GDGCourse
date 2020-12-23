@@ -60,9 +60,8 @@ export class LeconViewComponent implements OnInit {
     ];
 
 
-    //const course_slug = this.route.snapshot.paramMap.get("slug");
-    //this.getCourse(course_slug)
-
+    const lecon_url = this.route.snapshot.paramMap.get("lecon_url");
+    //this.getLecon(lecon_url)
     //related course
     this.getRelatedCourse(1)
     //recuperatiion des commentaires pour cet article
@@ -70,8 +69,8 @@ export class LeconViewComponent implements OnInit {
     //this.AllCommentByArticle(course_slug)
   }
 
-  getCourse(course_slug){
-    this.courseService.findCourse(course_slug).then(
+  getLecon(lecon_url){
+    this.courseService.findCourse(lecon_url).then(
       (data) => {
         this.course = data;
         console.log(this.course)

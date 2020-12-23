@@ -86,7 +86,7 @@ export class FormationViewComponent implements OnInit {
       )
     }
 
-    detailLecon(){
-      this.router.navigate(["/formation/lecon","firebase-authentificaiton"])
+    detailLecon(leconUrl){
+      this.router.navigate(["/formation/lecon","leconUrl"])
     }
 }

@@ -23,7 +23,7 @@ const routes: Routes = [
   {path:'about-us',component:AboutComponent},
   {path: 'formation-view/:slug', component: FormationViewComponent},
   {path:'formation', component: FormationListComponent},
-  { path : 'formation/lecon/:slug', component: LeconViewComponent},
+  { path : 'formation/lecon/:lecon_url', component: LeconViewComponent},
   { path: 'contact-us', component: ContactComponent },
 
   // les differents routes pour la partie administration
