@@ -2,7 +2,6 @@ import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
 import { AuthService } from 'src/app/services/auth.service';
-import { NotifService } from 'src/app/services/notif.service';
 
 @Component({
   selector: 'app-login',
@@ -26,7 +25,6 @@ export class LoginComponent implements OnInit {
     private authService: AuthService,
     private route: ActivatedRoute,
     private router: Router,
-    private notifService: NotifService,
 
     
   ) { }
@@ -35,7 +33,6 @@ export class LoginComponent implements OnInit {
     this.scriptUrl = "../../../assets/admin/js/main.js"
     this.loadScript()
     this.initForm()
-    this.notifService.danger("echec authentificaiton")
   }
 
   public loadScript() {
@@ -67,7 +64,6 @@ export class LoginComponent implements OnInit {
     this.isLoading = false
     // Si la validation a echoué, on arrete l'execution de la fonction
     if (this.loginForm.invalid) {
-      this.notifService.danger("bien remplir vos champs")
       return;
     }
 

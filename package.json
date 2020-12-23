@@ -21,11 +21,9 @@
     "@angular/router": "~8.2.14",
     "@ckeditor/ckeditor5-angular": "^2.0.1",
     "@ckeditor/ckeditor5-build-classic": "^24.0.0",
-    "@ckeditor/ckeditor5-build-decoupled-document": "^24.0.0",
-    "ngx-toastr": "^13.2.0",
     "rxjs": "~6.4.0",
     "tslib": "^1.10.0",
-    "zone.js": "~0.9.1"
+    "zone.js": "^0.11.3"
   },
   "devDependencies": {
     "@angular-devkit/build-angular": "~0.803.19",

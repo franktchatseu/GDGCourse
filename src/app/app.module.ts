@@ -27,11 +27,9 @@ import { LeconViewComponent } from './components/formation/lecon-view/lecon-view
 import { BlogViewComponent } from './admin/blog/blog-view/blog-view.component';
 import { AcceuilComponentAdmin } from './admin/acceuil/acceuil.component';
 import { BlogAddComponent } from './admin/blog/blog-add/blog-add.component';
-import { CKEditorModule } from '@ckeditor/ckeditor5-angular';
 import { ContactComponent } from './components/contact/contact.component';
 import { AddTokenInterceptor } from './_http-interceptors/add-token.interceptor';
-import { NotifService } from './services/notif.service';
-import { ToastrModule } from 'ngx-toastr';
+import { CKEditorModule } from '@ckeditor/ckeditor5-angular';
 @NgModule({
   declarations: [
     AppComponent,
@@ -60,13 +58,13 @@ import { ToastrModule } from 'ngx-toastr';
     HttpClientModule,
     FormsModule,
     ReactiveFormsModule,
-    CKEditorModule,
-    ToastrModule.forRoot(),
-    BrowserAnimationsModule
+    BrowserAnimationsModule,
+    CKEditorModule
+
 
 
   ],
-  providers: [CourseService, UserService, CommentService, FormationService,NotifService,
+  providers: [CourseService, UserService, CommentService, FormationService,
     { provide: HTTP_INTERCEPTORS, useClass: AddTokenInterceptor, multi: true },
   ],
   bootstrap: [AppComponent, AcceuilComponent, CourseListComponent, FormationViewComponent],
