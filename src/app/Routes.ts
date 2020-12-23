@@ -1,4 +1,4 @@
-export const ROOT = 'http://localhost:8000/';
+export const ROOT = 'http://127.0.0.1:8000/';
 export const SERVER = ROOT + 'api/';
 
 export const LOGIN = SERVER + 'account/auth/login/';
