@@ -40,7 +40,7 @@ const routes: Routes = [
       },
     ]
   },
-  {path:'admin/login', component:LoginComponent},
+  {path:'login', component:LoginComponent},
   {path: '**', redirectTo:''},
 ];
 

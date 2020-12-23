@@ -16,6 +16,10 @@ export class CourseService {
     const url = Routes.BLOG+'?page='+page
     return this.http.get<any>(url).toPromise();
   }
+  //retourne tous les articles d'un user
+  getBlogByUser(user_id): Promise<any> {
+    return this.http.get<any>(`${Routes.USERPOST}/${user_id}`).toPromise();
+  }
    //methode qui retourne les data à partir de url
    getUrl(url): Promise<any> {
     return this.http.get<any>(url).toPromise();

@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
+import { AuthService } from 'src/app/services/auth.service';
 import { CourseService } from 'src/app/services/course.service';
 
 @Component({
@@ -24,31 +25,23 @@ export class BlogViewComponent implements OnInit {
   previousUrl: any
   constructor(
     private router: Router,
-    private courseService: CourseService
+    private courseService: CourseService,
+    private authService: AuthService
   ) { }
 
   ngOnInit() {
-    this.getAllCourses(1)
+    const user = this.authService.getUser();
+    this.getAllBlogByUser(user.id)
   }
 
   addPage(){
     this.router.navigate(['/admin/blog-add'])
   }
 
-  getAllCourses(page) {
-    this.courseService.getPage(page).then(
+  getAllBlogByUser(user_id) {
+    this.courseService.getBlogByUser(user_id).then(
       (data) => {
-
-        for (var i = 0; i < data.count / 6; i++) {
-          this.tablePage[i] = i+1;
-          console.log(i)
-        }
-        this.courses = data.results;
-        this.course_tmp = data.results
-        this.nbreofPage = this.courses.count / 2;
-        this.nextUrl = data.next;
-        this.previousUrl = data.previous
-        console.log(this.courses)
+        this.courses = data.posts;
       }
     ).catch(
       (error) => {

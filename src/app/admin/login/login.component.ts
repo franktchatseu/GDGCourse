@@ -81,12 +81,12 @@ export class LoginComponent implements OnInit {
         this.authService.saveRoles(resp.roles);
         this.authService.saveToken(resp.token);
         this.authService.saveUser(resp.user);
-        this.notifService.success('La connexion a reussie')
+        alert("la connection à reussie")
         this.router.navigate(['/admin']);
       })
       .catch(err => {
         console.log(err)
-        this.notifService.danger("echec authentificaiton")
+        alert("echec authentification")
       })
       .finally(() => this.isLoading = false);
   }
