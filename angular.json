@@ -70,9 +70,10 @@
               "buildOptimizer": true,
               "budgets": [
                 {
-                  "type": "initial",
-                  "maximumWarning": "2mb",
-                  "maximumError": "5mb"
+                  "type": "bundle",
+
+                  "maximumWarning": "170kb",
+                  "maximumError": "250kb"
                 },
                 {
                   "type": "anyComponentStyle",
