@@ -341,10 +341,7 @@ a:active {
 /*--------------------------------------------------------------
 # Hero Section
 --------------------------------------------------------------*/
-.hero-content {
-    background: url("imagesDSC/dscclub.JPG") no-repeat center;
-    background-size: cover;
-}
+
 
 .hero-content-overlay {
   background: rgba(21, 20, 33, .5);

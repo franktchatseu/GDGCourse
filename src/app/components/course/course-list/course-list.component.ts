@@ -154,7 +154,6 @@ export class CourseListComponent implements OnInit {
     this.router.navigate(['/course-content/'+slug])
   }
 
-  //recuperation de toutes les categories
   getLastestCourse() {
     this.courseService.lastestCourse().then(
       (data) => {
