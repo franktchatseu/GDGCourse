@@ -918,7 +918,18 @@ a.btn:hover {
   font-size: 42px;
   font-weight: 400;
 }
-
+.our-department .heading .entry-title {
+  margin: 0 0 50px;
+  font-size: 42px;
+  font-weight: 400;
+}
+.our-department .heading .entry-title {
+  width: 100%;
+  margin-top: 32px;
+  font-size: 40px;
+  font-weight: 400;
+  color: #383749;
+}
 .latest-news-events .featured-event-content .event-thumbnail img {
   display: block;
   width: 100%;
