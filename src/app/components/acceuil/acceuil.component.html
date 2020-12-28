@@ -184,13 +184,13 @@
     <div class="row">
       <div class="col-12">
         <header class="heading flex justify-content-between align-items-center">
-          <h2 class="entry-title">Lastest Courses</h2>
+          <h2 class="entry-title">Lastest Articles</h2>
 
           <a class="btn mt-4 mt-sm-0" href="#">view all</a>
         </header><!-- .heading -->
       </div><!-- .col -->
 
-      <div class="col-12 col-lg-6" *ngFor="let latest of latestCourses">
+      <div class="col-12 col-lg-6" *ngFor="let latest of latet Articles">
         <div style="cursor: pointer;" [routerLink]="['/course-content',latest.slug]" class="course-content flex flex-wrap justify-content-between align-content-lg-stretch">
           <figure class="course-thumbnail">
             <a ><img src="{{latest.banner}}" alt=""></a>
@@ -304,7 +304,7 @@
     <div class="row mx-m-25">
       <div class="col-12 px-25">
         <header class="heading flex flex-wrap justify-content-between align-items-center">
-          <h2 class="entry-title">Featured Courses</h2>
+          <h2 class="entry-title">Featured Articles</h2>
 
           <nav class="courses-menu mt-3 mt-lg-0">
             <ul class="flex flex-wrap justify-content-md-end align-items-center">
