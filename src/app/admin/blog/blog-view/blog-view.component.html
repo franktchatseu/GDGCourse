@@ -40,9 +40,9 @@
               <div class="featured-courses courses-wrap">
                   <div class="row mx-m-25">
                     <div class="col-12 col-md-4 px-25" *ngFor="let course of courses">
-                        <div class="course-content">
+                        <div class="course-content" style="cursor: pointer;" [routerLink]="['/course-content',course.slug]">
                             <figure class="course-thumbnail">
-                                <a href="#"><img src="{{course.banner}}" alt=""></a>
+                                <a><img src="{{course.banner}}" alt=""></a>
                             </figure><!-- .course-thumbnail -->
 
                             <div class="course-content-wrap">

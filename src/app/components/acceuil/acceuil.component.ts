@@ -8,7 +8,8 @@ import { EventService } from 'src/app/services/event.service';
   styleUrls: ['./acceuil.component.scss']
 })
 export class AcceuilComponent implements OnInit {
-
+  scriptUrl: any
+  scriptUrl1: any
   courses: any = [];
   course_tmp: any = [];
   latestCourses: any = [];
@@ -21,6 +22,12 @@ export class AcceuilComponent implements OnInit {
   ) { }
 
   ngOnInit() {
+     //chargement des scripts
+    this.scriptUrl = "../../../assets/js/jquery.js"
+    this.scriptUrl1 = "../../../assets/js/custom.js"
+    this.loadScript()
+    this.loadScript1()
+
     this.getAllCategories()
     this.getAllCourses(1)
     this.getLastestCourse()
@@ -93,5 +100,24 @@ export class AcceuilComponent implements OnInit {
             console.log(error);
           }
         )
+      }
+
+      public loadScript() {
+        console.log('preparing to load...')
+        let node = document.createElement('script');
+        node.src = this.scriptUrl,
+          node.type = 'text/javascript';
+        node.async = true;
+        node.charset = 'utf-8';
+        document.getElementsByTagName('head')[0].appendChild(node);
+      }
+      public loadScript1() {
+        console.log('preparing to load...')
+        let node = document.createElement('script');
+        node.src = this.scriptUrl1,
+          node.type = 'text/javascript';
+        node.async = true;
+        node.charset = 'utf-8';
+        document.getElementsByTagName('head')[0].appendChild(node);
       }
 }

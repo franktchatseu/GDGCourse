@@ -39,11 +39,10 @@
 
             ],
             "scripts": [
-              "src/assets/js/custom.js",
-              "src/assets/js/jquery.collapsible.min.js",
               "src/assets/js/jquery.js",
-              "src/assets/js/masonry.pkgd.min.js",
               "src/assets/js/swiper.min.js",
+              "src/assets/js/masonry.pkgd.min.js",
+              "src/assets/js/jquery.collapsible.min.js",
               "src/assets/custom.js"
             ]
           },

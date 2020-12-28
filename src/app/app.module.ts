@@ -67,6 +67,6 @@ import { CKEditorModule } from '@ckeditor/ckeditor5-angular';
   providers: [CourseService, UserService, CommentService, FormationService,
     { provide: HTTP_INTERCEPTORS, useClass: AddTokenInterceptor, multi: true },
   ],
-  bootstrap: [AppComponent, AcceuilComponent, CourseListComponent, FormationViewComponent],
+  bootstrap: [AppComponent],
 })
 export class AppModule { }
