@@ -11,6 +11,7 @@ export const USERPOST = SERVER + 'blog/post/user';
 export const CATEGORY = SERVER + 'blog/category';
 export const TAG = SERVER + 'blog/tag/';
 export const COMMENT = SERVER + 'blog/post/comment';
+export const COMMENTCREATE = SERVER + 'blog/comment/create/';
 export const RESPONSE = SERVER + 'blog/post/response';
 export const USER = SERVER + 'account/auth/profile';
 export const FORMATION = SERVER + 'blog/formation';

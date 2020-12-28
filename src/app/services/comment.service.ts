@@ -12,7 +12,7 @@ export class CommentService {
   ) { }
 
   addComment(newComment): Promise<any> {
-    return this.http.post<any>(Routes.COMMENT, newComment).toPromise();
+    return this.http.post<any>(Routes.COMMENTCREATE, newComment).toPromise();
   }
   addResponse(newResponse): Promise<any> {
     return this.http.post<any>(Routes.RESPONSE, newResponse).toPromise();

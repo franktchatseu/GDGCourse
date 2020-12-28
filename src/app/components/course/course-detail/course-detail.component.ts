@@ -92,10 +92,12 @@ export class CourseDetailComponent implements OnInit {
 
   addComment() {
     const newComment = {
-      slugCourse: this.course.slug,
+      slug: this.course.slug,
       name: this.commentName,
       email: this.commentEmail,
-      body: this.commentBody
+      body: this.commentBody,
+      user: 1,
+      post: this.course.id
     }
     console.log(newComment)
     this.commentService.addComment(newComment).then(
