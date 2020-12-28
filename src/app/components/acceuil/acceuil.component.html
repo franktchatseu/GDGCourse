@@ -41,7 +41,7 @@
             <nav class="site-navigation flex justify-content-end align-items-center">
               <ul class="flex flex-column flex-lg-row justify-content-lg-end align-content-center">
                 <li class="current-menu-item"><a [routerLink]="['/acceuil']">Home</a></li>
-                <li><a [routerLink]="['/about-us']">About</a></li>
+                <li><a routerLinkActive [routerLink]="['/about-us']">About</a></li>
                 <li><a [routerLink]="['/course-list']">Courses</a></li>
                 <li><a [routerLink]="['/formation']">Formation</a></li>
                 <li><a [routerLink]="['/contact-us']">Contact</a></li>
@@ -254,7 +254,7 @@
 <section class="testimonial-section">
   <!-- Swiper -->
   <div class="swiper-container testimonial-slider">
-    <div class="swiper-wrapper">
+    <div class="">
       <div class="swiper-slide">
         <div class="container">
           <div class="row">
@@ -273,7 +273,7 @@
               </div><!-- .entry-content -->
 
               <div class="entry-footer">
-                <h3 class="testimonial-user">FOSTA ABDEL AZIZ - <span>DSC LEAD</span></h3>
+                <h3 class="testimonial-user"> ABDEL AZIZ MFOSSA - <span>DSC LEAD</span></h3>
               </div><!-- .entry-footer -->
             </div><!-- .col -->
           </div><!-- .row -->

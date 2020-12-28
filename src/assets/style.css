@@ -818,7 +818,7 @@ a.btn:hover {
 }
 
 .testimonial-slider .swiper-slide .user-avatar {
-  opacity: .3;
+  opacity: 1;
   margin-bottom: 0;
 }
 
@@ -828,7 +828,7 @@ a.btn:hover {
 
 .testimonial-slider .swiper-slide:nth-of-type(2) .user-avatar,
 .testimonial-slider .swiper-slide:nth-of-type(5) .user-avatar {
-  margin-left: calc(50% - 150px);
+  margin-left: calc(100% - 150px);
 }
 
 .testimonial-slider .swiper-slide:nth-of-type(3) .user-avatar {
