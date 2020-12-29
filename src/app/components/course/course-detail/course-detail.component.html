@@ -1,5 +1,5 @@
 <div class="single-blog-post">
-    <app-header headerTitle="{{this.course.title}}"></app-header>
+    <app-header headerTitle="{{this.course?.title}}"></app-header>
     <div class="container-fluid">
 
         <div class="row">
@@ -16,13 +16,13 @@
             </div><!-- .col -->
 
             <div class="col-lg-6">
-                <div class="single-post-wrap" [innerHTML]="course.body">
+                <div class="single-post-wrap" [innerHTML]="course?.body">
 
                 </div><!-- .single-post-wrap -->
 
                 <div class="tags-links mt-4">
                     <ul class="d-flex flex-wrap align-items-center p-0 m-0">
-                        <li *ngFor="let tag of this.course.tag"><a href="#">{{tag}}</a></li>
+                        <li *ngFor="let tag of this.course?.tag"><a href="#">{{tag}}</a></li>
 
                     </ul>
                 </div><!-- .tags-links -->
@@ -47,9 +47,9 @@
                                     *ngFor="let course of relatedCourses" >
                                     <img [src]="course.banner"  alt="" >
                                     <div class="content-wrap">
-                                        <h3><a >{{course.title}}</a></h3>
+                                        <h3><a >{{course?.title}}</a></h3>
 
-                                        <div class="course-cost free-cost">{{course.user}}</div>
+                                        <div class="course-cost free-cost">{{course?.user}}</div>
                                     </div><!-- .content-wrap -->
                                 </li>
                             </ul>
@@ -74,7 +74,7 @@
                 <div class="author-box">
                     <div class="author-info flex flex-wrap">
                         <div class="author-avatar">
-                            <img src="{{this.user.image}}" alt="">
+                            <img src="{{this.user?.image}}" alt="">
 
                             <ul class="author-social-profile p-0 m-0 mt-3 d-flex flex-wrap align-items-center">
                                 <li><a href="#"><i class="fa fa-facebook"></i></a></li>
@@ -84,10 +84,10 @@
                         </div><!-- .author-avatar -->
 
                         <div class="author-details">
-                            <h3 class="author-name">{{this.course.user}}<span>Redactor</span></h3>
+                            <h3 class="author-name">{{this.course?.user}}<span>Redactor</span></h3>
 
                             <div class="entry-content mt-3">
-                                <p>{{this.user.description}}</p>
+                                <p>{{this.user?.description}}</p>
                             </div><!-- .entry-content -->
                         </div><!-- .author-details -->
                     </div><!-- .author-info -->
@@ -106,15 +106,15 @@
                                     <div class="comment-wrap">
                                         <div class="comment-author">
                                             <span class="comment-meta d-block">
-                                                <a href="#">{{comment.created_at | date:'dd-MMM-yyyy'}}</a>
+                                                <a href="#">{{comment?.created_at | date:'dd-MMM-yyyy'}}</a>
                                             </span><!-- .comment-meta -->
 
                                             <span class="fn">
-                                                <a href="#">{{comment.name}}</a>
+                                                <a href="#">{{comment?.name}}</a>
                                             </span><!-- .fn -->
                                         </div><!-- .comment-author -->
 
-                                        <p>{{comment.body}}</p>
+                                        <p>{{comment?.body}}</p>
 
                                         <div class="reply">
                                             <a href="#">reply</a>
@@ -134,15 +134,15 @@
                                             <div class="comment-wrap">
                                                 <div class="comment-author">
                                                     <span class="comment-meta d-block">
-                                                        <a href="#">{{comment.created_at | date:'dd-MMM-yyyy'}}</a>
+                                                        <a href="#">{{comment?.created_at | date:'dd-MMM-yyyy'}}</a>
                                                     </span><!-- .comment-meta -->
 
                                                     <span class="fn">
-                                                        <a href="#">{{response.name}}</a>
+                                                        <a href="#">{{response?.name}}</a>
                                                     </span><!-- .fn -->
                                                 </div><!-- .comment-author -->
 
-                                                <p>{{response.body}}</p>
+                                                <p>{{response?.body}}</p>
                                             </div><!-- .comment-wrap -->
 
                                             <div class="clearfix"></div>

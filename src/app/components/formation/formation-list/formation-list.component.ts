@@ -53,7 +53,7 @@ export class FormationListComponent implements OnInit {
     ]
     //recuperation de tous les cours.
     this.getAllFormations(1);
-
+    this.getLastestCourse()
     this.getAllCategories()
     this.getAllTag()
   }
@@ -152,5 +152,18 @@ export class FormationListComponent implements OnInit {
     
   detailFormation(slug) {
     this.router.navigate(['/formation-view/'+slug])
+  }
+
+  getLastestCourse() {
+    this.formationService.lastestFormation().then(
+      (data) => {
+        this.latestCourses = data;
+        console.log(this.latestCourses)
+      }
+    ).catch(
+      (error) => {
+        console.log(error);
+      }
+    )
   }
 }

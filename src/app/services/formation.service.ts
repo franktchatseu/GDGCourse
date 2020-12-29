@@ -34,6 +34,11 @@ export class FormationService {
     return this.http.post<any>(Routes.BLOG, formData).toPromise();
   }
 
+  lastestFormation(){
+    return this.http.get<any>(Routes.LASTESTBLOG).toPromise();
+  
+  }
+
 
 
   update(formData: FormData, id: number): Promise<any> {

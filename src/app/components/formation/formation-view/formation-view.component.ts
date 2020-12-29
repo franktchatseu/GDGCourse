@@ -67,7 +67,7 @@ export class FormationViewComponent implements OnInit {
         this.formation = data
         this.getUser(1)
       },
-      (error) => {this.formation.user
+      (error) => {
         console.log(error)
       }
     )

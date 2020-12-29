@@ -1175,9 +1175,11 @@ a.btn:hover {
 }
 
 .courses-page .page-header {
-  background: url("images/courses-header.jpg") no-repeat center;
+  background: url("images/background-blog.jpg") no-repeat center;
 }
-
+.formation-page .page-header {
+  background: url("images/background-formation.jpg") no-repeat center;
+}
 .page-header-overlay {
   background: rgba(21, 20, 33, .5);
   height: 390px;
@@ -2029,7 +2031,7 @@ ul.black-doted {
 # Blog Page
 --------------------------------------------------------------*/
 .blog-page .page-header {
-  background: url("images/courses-header.jpg") no-repeat center;
+  background: url("images/background-blog.jpg") no-repeat center;
 }
 
 .blog-posts {
@@ -2118,7 +2120,7 @@ ul.black-doted {
 # Single Blog Post
 --------------------------------------------------------------*/
 .single-blog-post .page-header {
-  background: url("images/background.jpg") no-repeat center;
+  background: url("images/background-article1.jpg") no-repeat center;
 }
 
 .single-blog-post .page-header-overlay {
