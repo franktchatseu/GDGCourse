@@ -81,7 +81,7 @@ export class CourseDetailComponent implements OnInit {
   AllCommentByArticle(course_slug) {
     this.commentService.allCommentByCourse(course_slug).then(
       (data) => {
-        this.commentCourses = data.comment
+        this.commentCourses = data[0].comment
         console.log(this.commentCourses)
       },
       (error) => {
@@ -92,12 +92,10 @@ export class CourseDetailComponent implements OnInit {
 
   addComment() {
     const newComment = {
-      slug: this.course.slug,
+      slugCourse: this.course.slug,
       name: this.commentName,
       email: this.commentEmail,
-      body: this.commentBody,
-      user: 1,
-      post: this.course.id
+      body: this.commentBody
     }
     console.log(newComment)
     this.commentService.addComment(newComment).then(

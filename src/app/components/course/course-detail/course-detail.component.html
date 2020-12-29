@@ -29,41 +29,47 @@
 
 
             </div><!-- .col -->
-            <div class="sidebar">
-                <div class="container mr-1">
-                    <div class="search-widget">
-                        <form class="flex flex-wrap align-items-center">
-                            <input type="search" placeholder="Search...">
-                            <button type="submit" class="flex justify-content-center align-items-center"><i
-                                    class="fa fa-search"></i></button>
-                        </form><!-- .flex -->
-                    </div><!-- .search-widget -->
-                    <div class="">
-                        <div class="latest-courses">
-                            <h2>Latest Courses</h2>
-
-                            <ul class="p-0 m-0">
-                                <li (click)="navigate(course.slug)" style="cursor: pointer;"  class="flex flex-wrap justify-content-between align-items-center"
-                                    *ngFor="let course of relatedCourses" >
-                                    <img [src]="course.banner"  alt="" >
-                                    <div class="content-wrap">
-                                        <h3><a >{{course?.title}}</a></h3>
-
-                                        <div class="course-cost free-cost">{{course?.user}}</div>
-                                    </div><!-- .content-wrap -->
-                                </li>
-                            </ul>
-                        </div><!-- .latest-courses -->
+            <div class="col-12 col-lg-4">
+                <div class="sidebar">
+                    <div class="container">
+                        <div class="search-widget">
+                            <form class="flex flex-wrap align-items-center">
+                                <input type="search" placeholder="Search...">
+                                <button type="submit" class="flex justify-content-center align-items-center"><i
+                                        class="fa fa-search"></i></button>
+                            </form><!-- .flex -->
+                        </div><!-- .search-widget -->
+                        <div class="">
+                            <div class="latest-courses">
+                                <h2>Latest Courses</h2>
+    
+                                <ul class="p-0 m-0">
+                                    <li (click)="navigate(course.slug)" style="cursor: pointer;"  class="flex flex-wrap justify-content-between align-items-center"
+                                        *ngFor="let course of relatedCourses" >
+                                        <img [src]="course.banner"  alt="" >
+                                        <div class="content-wrap">
+                                            <div>
+                                                <h3 sty><a >{{course?.title}}</a></h3>
+                                            </div>
+                                            
+    
+                                            <div class="course-cost free-cost">{{course?.user}}</div>
+                                        </div><!-- .content-wrap -->
+                                    </li>
+                                </ul>
+                            </div><!-- .latest-courses -->
+                        </div>
+    
+                        <div class="ads">
+                            <img src="assets/images/ads.jpg" alt="">
+                        </div><!-- .ads -->
+    
+    
                     </div>
-
-                    <div class="ads">
-                        <img src="assets/images/ads.jpg" alt="">
-                    </div><!-- .ads -->
-
-
+    
                 </div>
-
             </div>
+
 
         </div><!-- .row -->
         <div class="container">
