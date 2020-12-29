@@ -82,7 +82,7 @@
                         <h2>Latest Articles</h2>
 
                         <ul class="p-0 m-0">
-                            <li style="cursor: pointer;" [routerLink]="['/course-content',latest.slug]" class="flex flex-wrap justify-content-between align-items-center" *ngFor="let latest of latestCourses">
+                            <li style="cursor: pointer;" [routerLink]="['/formation-view',latest.slug]" class="flex flex-wrap justify-content-between align-items-center" *ngFor="let latest of latestCourses">
                                 <img [src]="latest.banner" alt="">
 
                                 <div class="content-wrap">

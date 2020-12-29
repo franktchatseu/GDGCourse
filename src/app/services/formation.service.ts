@@ -35,7 +35,7 @@ export class FormationService {
   }
 
   lastestFormation(){
-    return this.http.get<any>(Routes.LASTESTBLOG).toPromise();
+    return this.http.get<any>(Routes.LASTESTFORMATION).toPromise();
   
   }
 

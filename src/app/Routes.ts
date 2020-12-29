@@ -7,6 +7,7 @@ export const UPDATE_PASSWORD = SERVER + 'auth/updatepassword';
 export const BLOG = SERVER + 'blog/post';
 export const POSTCREATE = SERVER + 'blog/post/create/';
 export const LASTESTBLOG = SERVER + 'blog/post/recent';
+export const LASTESTFORMATION = SERVER + 'blog/formation/recent';
 export const USERPOST = SERVER + 'blog/post/user';
 export const CATEGORY = SERVER + 'blog/category';
 export const TAG = SERVER + 'blog/tag/';
