@@ -1,4 +1,4 @@
-export const ROOT = 'http://127.0.0.1:8000/';
+export const ROOT = 'https://backend-dsc.herokuapp.com/';
 export const SERVER = ROOT + 'api/';
 
 export const LOGIN = SERVER + 'account/auth/login/';
