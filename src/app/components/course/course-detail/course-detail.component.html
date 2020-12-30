@@ -1,7 +1,13 @@
 <div class="single-blog-post">
     <app-header headerTitle="{{this.course?.title}}"></app-header>
     <div class="container-fluid">
-
+        <div class="row">
+            <div class="col-12 offset-lg-1 col-lg-10">
+                <div class="featured-image">
+                    <img  src="{{this.course.banner}}" alt="">
+                </div>
+            </div><!-- .col -->
+        </div><!-- .row -->
         <div class="row">
             <div class="col-1 offset-1">
                 <div class="post-share">
