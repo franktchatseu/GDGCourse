@@ -1948,7 +1948,7 @@
                       <ul class="vertical-nav-menu">
                           <li class="app-sidebar__heading">Menu</li>
                           <li>
-                              <a href="tables-data-tables.html#">
+                              <a [routerLink]="['/admin',{outlets:{'admin':'blog-list'}}]">
                                   <i class="metismenu-icon pe-7s-rocket"></i>
                                   Dashboards
                                   <i class="metismenu-state-icon pe-7s-angle-down caret-left"></i>
@@ -1956,7 +1956,7 @@
   
                           </li>
                           <li>
-                              <a href="tables-data-tables.html#">
+                              <a [routerLink]="['/admin',{outlets:{'admin':'blog-list'}}]">
                                   <i class="metismenu-icon pe-7s-browser"></i>
                                   Blog
                                   <i class="metismenu-state-icon pe-7s-angle-down caret-left"></i>
