@@ -15,6 +15,9 @@ export class BlogAddComponent implements OnInit {
   public Editor = ClassicEditor ;
   public blogForm : FormGroup
   user : any
+  isLoading = false;
+  isSubmitted = false;
+
   //recuperation de toutes les categories
   categories :  any
   constructor(
@@ -46,7 +49,16 @@ export class BlogAddComponent implements OnInit {
     return this.blogForm.controls;
   }
   onSubmit(){
-    console.log(this.form.body.value)
+    this.isSubmitted = true
+    this.isLoading = false
+
+     // Si la validation a echoué, on arrete l'execution de la fonction
+     if (this.blogForm.invalid) {
+      alert(' remplissez correctement les champs')
+      return;
+    }
+    this.isLoading = true
+
     const formData = new FormData()
     formData.append('title',this.form.title.value)
     formData.append('description',this.form.description.value)
@@ -60,10 +72,15 @@ export class BlogAddComponent implements OnInit {
         console.log(data)
         alert("ajout de article reussi avec success")
         this.router.navigate(['/admin',{outlets:{'admin':'blog-list'}}])
-      },
+      }
+    ).catch(
       (error)=>{
         console.log(error)
         alert("echec ajout de article")
+      }
+    ).finally(
+      ()=>{
+        this.isLoading = false
       }
     )
 

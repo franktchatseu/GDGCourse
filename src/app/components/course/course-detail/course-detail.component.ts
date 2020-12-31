@@ -95,7 +95,8 @@ export class CourseDetailComponent implements OnInit {
       slugCourse: this.course.slug,
       name: this.commentName,
       email: this.commentEmail,
-      body: this.commentBody
+      body: this.commentBody,
+      user_id: 2
     }
     console.log(newComment)
     this.commentService.addComment(newComment).then(

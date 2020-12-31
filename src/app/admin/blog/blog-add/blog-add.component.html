@@ -22,12 +22,12 @@
                         <form (submit)="onSubmit()" [formGroup]="blogForm">
                             <div class="position-relative form-group">
                                 <label for="exampleFile" class="">Title</label>
-                                <input name="file" id="exampleFile" type="text" class="form-control"
+                                <input name="file" id="exampleFile" type="text" class="form-control {{ isSubmitted && form.title.errors ? 'is-invalid' : '' }}"
                                     formControlName="title">
                             </div>
                             <div class="position-relative form-group">
                                 <label for="examplePassword" class="">Categorie Article</label>
-                                <select class="form-control" formControlName="category"
+                                <select class="form-control {{ isSubmitted && form.category.errors ? 'is-invalid' : '' }}" formControlName="category" 
                                     *ngFor="let category of this.categories">
                                     <option value="" disabled selected hidden>choose</option>
                                     <option value="{{category.id}}">{{category.title}}</option>
@@ -35,13 +35,13 @@
                             </div>
                             <div class="position-relative form-group">
                                 <label for="exampleFile" class="">Image Couverture</label>
-                                <input name="file" id="exampleFile" type="text" placeholder="entrer url de image"
-                                    class="form-control" formControlName="image">
+                                <input class="form-control {{ isSubmitted && form.image.errors ? 'is-invalid' : '' }}" name="file" id="exampleFile" type="text" placeholder="entrer url de image"
+                                     formControlName="image">
                             </div>
                             <div class="position-relative form-group">
                                 <label for="exampleDescription" class=""> Description </label>
-                                <textarea name="text" id="exampleDescription"
-                                    placeholder="entrer une mini description de article" class="form-control"
+                                <textarea class="form-control {{ isSubmitted && form.description.errors ? 'is-invalid' : '' }}" name="text" id="exampleDescription"
+                                    placeholder="entrer une mini description de article" 
                                     formControlName="description">
 
                               </textarea>
@@ -49,7 +49,7 @@
                             <div class="row">
                                 <div class="col-md-12">
                                     <label for="editor" class=""> Saisir le contenu de l'article </label>
-                                    <ckeditor [editor]="Editor" data="" name="content" id="editor"
+                                    <ckeditor class=" {{ isSubmitted && form.body.errors ? 'is-invalid' : '' }}" [editor]="Editor" data="" name="content" id="editor"
                                         formControlName="body">
                                     </ckeditor>
                                 </div>
@@ -57,7 +57,17 @@
                             <div class="row">
                                 <div class="col-md-4">
                                     <button type="submit" class="btn btn-success m-2"
-                                        [disabled]="this.blogForm.invalid">Ajouter Article</button>
+                                        [disabled]=" isLoading">
+                                        <p *ngIf="!isLoading" style="font-size: 1.2em; padding: 0px; margin: 5px;"> Ajouter Article</p>
+                                       
+                                        <div *ngIf="isLoading" style="padding: 15px; ">
+                                            <div class="ball-scale-multiple">
+                                                <div style="background-color: white;"></div>
+                                                <div style="background-color: white;"></div>
+                                                <div style="background-color: white;"></div>
+                                            </div>
+                                        </div>
+                                    </button>
                                 </div>
                             </div>
                         </form>

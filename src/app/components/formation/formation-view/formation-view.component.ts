@@ -65,6 +65,7 @@ export class FormationViewComponent implements OnInit {
     this.formationService.findFormation(slug).then(
       (data) => {
         this.formation = data
+        console.log(data)
         this.getUser(1)
       },
       (error) => {
