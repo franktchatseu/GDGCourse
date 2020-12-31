@@ -81,7 +81,7 @@ export class CourseDetailComponent implements OnInit {
   AllCommentByArticle(course_slug) {
     this.commentService.allCommentByCourse(course_slug).then(
       (data) => {
-        this.commentCourses = data[0].comment
+        this.commentCourses = data.comment
         console.log(this.commentCourses)
       },
       (error) => {

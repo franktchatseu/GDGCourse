@@ -1,10 +1,10 @@
     <div class="single-blog-post">
-        <app-header headerTitle="{{this.formation.title}}"></app-header>
+        <app-header headerTitle="{{this.formation?.title}}"></app-header>
         <div class="container">
             <div class="row">
                 <div class="col-12 offset-lg-1 col-lg-10">
                     <div class="featured-image">
-                        <img  src="{{this.formation.banner}}" alt="">
+                        <img  src="{{this.formation?.banner}}" alt="">
                     </div>
                 </div><!-- .col -->
             </div><!-- .row -->
@@ -28,17 +28,17 @@
                     <div class="single-course-wrap">
                         <div class="course-info flex flex-wrap align-items-center">
                             <div class="course-author flex flex-wrap align-items-center mt-3">
-                                <img src="{{this.formation.banner}}" alt="image de couverture">
+                                <img src="{{this.formation?.banner}}" alt="image de couverture">
     
                                 <div class="author-wrap">
                                     <label class="m-0">Teacher</label>
-                                    <div class="author-name"><a>{{this.formation.user}}</a></div>
+                                    <div class="author-name"><a>{{this.formation?.user}}</a></div>
                                 </div><!-- .author-wrap -->
                             </div><!-- .course-author -->
     
                             <div class="course-cats mt-3">
                                 <label class="m-0">Categories</label>
-                                <div class="author-name"><a>{{this.formation.category}}</a></div>
+                                <div class="author-name"><a>{{this.formation?.category}}</a></div>
                             </div><!-- .course-cats -->
                         </div><!-- .course-info -->
                         <br>
@@ -76,7 +76,7 @@
                                     <h3 style="cursor: pointer" (click)="detailLecon(lecon.link)" class="entry-title flex flex-wrap justify-content-between align-items-lg-center active" *ngFor="let lecon of this.formation.lecon">
                                         
                                         <span class="arrow-r"><i class="fa fa-plus"></i><i class="fa fa-minus"></i></span>
-                                        <span  class="lecture-group-title">{{lecon.title | uppercase}}</span>
+                                        <span  class="lecture-group-title">{{lecon?.title | uppercase}}</span>
                                         <span class="number-of-lectures">Lecon 1</span>
                                     </h3>
     
@@ -91,7 +91,7 @@
     
                             <div class="instructor-short-info flex flex-wrap">
                                 <div class="instructors-stats">
-                                    <img src="{{this.user.image}}" alt="">
+                                    <img src="{{this.user?.image}}" alt="">
     
                                     <ul class="p-0 m-0 mt-3">
                                        <li><i class="fa fa-star"></i> Redactor</li>
@@ -101,11 +101,11 @@
                                 <div class="instructors-details">
     
                                     <div class="course-teacher mt-3">
-                                        Teacher: <a href="#">{{this.user.name}}</a>
+                                        Teacher: <a href="#">{{this.user?.name}}</a>
                                     </div><!-- .course-teacher -->
     
                                     <div class="entry-content mt-3">
-                                        <p>{{this.user.description}}</p>
+                                        <p>{{this.user?.description}}</p>
                                     </div><!-- .entry-content -->
                                 </div><!-- .instructors-details -->
                             </div><!-- .instructor-short-info -->
