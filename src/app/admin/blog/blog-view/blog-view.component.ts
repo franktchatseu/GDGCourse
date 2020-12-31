@@ -38,7 +38,7 @@ export class BlogViewComponent implements OnInit {
     this.router.navigate(['/admin/blog-add'])
   }
 
-  getAllBlogByUser(user_id) {
+  /*getAllBlogByUser(user_id) {
     this.courseService.getBlogByUser(user_id).then(
       (data) => {
         this.courses = data.posts;
@@ -48,9 +48,20 @@ export class BlogViewComponent implements OnInit {
         console.log(error);
       }
     )
+  }*/
+  getAllBlogByUser(user_id) {
+    this.courseService.getPage(1).then(
+      (data) => {
+        this.courses = data.results;
+      }
+    ).catch(
+      (error) => {
+        console.log(error);
+      }
+    )
   }
 
-  // function de rech erche d'un blog
+  // function de recherche d'un blog
   search(event) {
     this.courses = this.course_tmp;
     this.courses = this.courses.filter(course => course.slug.toLowerCase().includes(event.target.value.toLowerCase()));

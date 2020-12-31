@@ -166,7 +166,7 @@
   </div><!-- .container -->
 </section><!-- .courses-wrap -->
 
-<section class="latest-news-events" style="background-image:url('assets/images') white;">
+<section class="latest-news-events" style="background-image:url('assets/images') white; ">
   <div class="container">
     <div class="row">
       <div class="col-12">
@@ -175,7 +175,7 @@
         </header><!-- .heading -->
       </div><!-- .col -->
 
-      <div class="col-12 col-lg-6" *ngFor="let event of ortherEvents" >
+      <div class="col-12 col-lg-6 mt-5" *ngFor="let event of ortherEvents" >
         <div class="featured-event-content">
           <figure class="event-thumbnail position-relative m-0">
             <a href="{{event.chapter_url}}">
@@ -195,6 +195,7 @@
             <div class="event-duration"><i class="fa fa-calendar"></i>{{event.date_event | date:'dd MMM'}} - {{event.date_event | date:'dd MMM'}}</div>
           </header><!-- .entry-header -->
         </div><!-- .featured-event-content -->
+        
       </div><!-- .col -->
 
     </div><!-- .row -->
