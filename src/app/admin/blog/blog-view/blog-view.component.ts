@@ -38,7 +38,7 @@ export class BlogViewComponent implements OnInit {
     this.router.navigate(['/admin/blog-add'])
   }
 
-  /*getAllBlogByUser(user_id) {
+  getAllBlogByUser(user_id) {
     this.courseService.getBlogByUser(user_id).then(
       (data) => {
         this.courses = data.posts;
@@ -48,8 +48,8 @@ export class BlogViewComponent implements OnInit {
         console.log(error);
       }
     )
-  }*/
-  getAllBlogByUser(user_id) {
+  }
+  /*getAllBlogByUser(user_id) {
     this.courseService.getPage(1).then(
       (data) => {
         this.courses = data.results;
@@ -59,7 +59,7 @@ export class BlogViewComponent implements OnInit {
         console.log(error);
       }
     )
-  }
+  }*/
 
   // function de recherche d'un blog
   search(event) {

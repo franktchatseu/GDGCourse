@@ -1,5 +1,5 @@
-import { Component, OnInit } from '@angular/core';
-import { Router } from '@angular/router';
+import { Component, OnDestroy, OnInit } from '@angular/core';
+import { NavigationEnd, Router } from '@angular/router';
 import { CourseService } from 'src/app/services/course.service';
 import { UserService } from 'src/app/services/user.service';
 
@@ -8,7 +8,7 @@ import { UserService } from 'src/app/services/user.service';
   templateUrl: './course-list.component.html',
   styleUrls: ['./course-list.component.scss']
 })
-export class CourseListComponent implements OnInit {
+export class CourseListComponent implements OnInit,OnDestroy {
 
   courses: any = [];
   course_tmp: any = []; //
@@ -24,6 +24,9 @@ export class CourseListComponent implements OnInit {
   activePage: number = 1
   nextUrl: any
   previousUrl: any
+  message ="bonjour";
+  //
+  navigationSubcription: any;
   constructor(
     private courseService: CourseService,
     private userService: UserService,
@@ -31,7 +34,18 @@ export class CourseListComponent implements OnInit {
 
 
   ) {
+    this.navigationSubcription = this.router.events.subscribe(
+      (event)=>{
+        if(event instanceof NavigationEnd){
+          this.initialiseInvites()
+        }
+      }
+    )
+  }
 
+  initialiseInvites(){
+    this.message ="i change the value"
+    console.log(this.message)
   }
 
   ngOnInit() {
@@ -167,4 +181,7 @@ export class CourseListComponent implements OnInit {
     )
   }
 
+  ngOnDestroy(){
+
+  }
 }

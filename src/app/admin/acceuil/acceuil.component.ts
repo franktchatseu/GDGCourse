@@ -18,7 +18,7 @@ export class AcceuilComponentAdmin implements OnInit {
   ) { }
 
   ngOnInit() {
-    this.scriptUrl = "../../../assets/admin/js/main.js"
+      this.scriptUrl = "../../../assets/admin/js/main.js"
     this.loadScript()
 
     //recuperation du user

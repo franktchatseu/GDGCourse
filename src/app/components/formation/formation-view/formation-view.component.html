@@ -73,7 +73,7 @@
     
                             <div class="entry-contents">
                                 <div class="accordion-wrap type-accordion">
-                                    <h3 style="cursor: pointer" (click)="detailLecon(lecon.link)" class="entry-title flex flex-wrap justify-content-between align-items-lg-center active" *ngFor="let lecon of this.formation.lecon">
+                                    <h3 style="cursor: pointer" (click)="detailLecon(lecon.slug)" class="entry-title flex flex-wrap justify-content-between align-items-lg-center active" *ngFor="let lecon of this.formation.lecon">
                                         
                                         <span class="arrow-r"><i class="fa fa-plus"></i><i class="fa fa-minus"></i></span>
                                         <span  class="lecture-group-title">{{lecon?.title | uppercase}}</span>

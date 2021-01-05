@@ -17,7 +17,7 @@ import { HeaderComponent } from './components/header/header.component';
 import { CourseDetailComponent } from './components/course/course-detail/course-detail.component';
 import { AboutComponent } from './components/about/about.component';
 import { FormationViewComponent } from './components/formation/formation-view/formation-view.component';
-import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
+import { HttpClient, HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { LoginComponent } from './admin/login/login.component';
 import { CommentService } from './services/comment.service';
@@ -30,6 +30,8 @@ import { BlogAddComponent } from './admin/blog/blog-add/blog-add.component';
 import { ContactComponent } from './components/contact/contact.component';
 import { AddTokenInterceptor } from './_http-interceptors/add-token.interceptor';
 import { CKEditorModule } from '@ckeditor/ckeditor5-angular';
+
+
 @NgModule({
   declarations: [
     AppComponent,

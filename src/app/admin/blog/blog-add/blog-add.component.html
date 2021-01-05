@@ -28,9 +28,9 @@
                             <div class="position-relative form-group">
                                 <label for="examplePassword" class="">Categorie Article</label>
                                 <select class="form-control {{ isSubmitted && form.category.errors ? 'is-invalid' : '' }}" formControlName="category" 
-                                    *ngFor="let category of this.categories">
+                                     >
                                     <option value="" disabled selected hidden>choose</option>
-                                    <option value="{{category.id}}">{{category.title}}</option>
+                                    <option *ngFor="let category of this.categories" value="{{category.id}}">{{category.title}}</option>
                                 </select>
                             </div>
                             <div class="position-relative form-group">

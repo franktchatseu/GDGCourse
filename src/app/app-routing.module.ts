@@ -17,18 +17,18 @@ import { BlogViewComponent } from './admin/blog/blog-view/blog-view.component';
 
 const routes: Routes = [
   // les routes de la partie publique
-  {path:'',component:AcceuilComponent},
-  {path:'course-list',component:CourseListComponent},
-  {path:'course-content/:slug',component:CourseDetailComponent},
-  {path:'about-us',component:AboutComponent},
+  {path:'',component:AcceuilComponent,runGuardsAndResolvers:'always'},
+  {path:'course-list',component:CourseListComponent,runGuardsAndResolvers:'always'},
+  {path:'course-content/:slug',component:CourseDetailComponent,runGuardsAndResolvers:'always'},
+  {path:'about-us',component:AboutComponent,runGuardsAndResolvers:'always'},
   {path: 'formation-view/:slug', component: FormationViewComponent},
-  {path:'formation', component: FormationListComponent},
-  { path : 'formation/lecon/:lecon_url', component: LeconViewComponent},
-  { path: 'contact-us', component: ContactComponent },
+  {path:'formation', component: FormationListComponent,runGuardsAndResolvers:'always'},
+  { path : 'formation/lecon/:slug', component: LeconViewComponent,runGuardsAndResolvers:'always'},
+  { path: 'contact-us', component: ContactComponent ,runGuardsAndResolvers:'always'},
 
   // les differents routes pour la partie administration
   {
-    path: 'admin',component: AcceuilComponentAdmin,
+    path: 'admin',component: AcceuilComponentAdmin,runGuardsAndResolvers:'always',
     children: [
       {
         path: 'blog-add',
@@ -45,7 +45,7 @@ const routes: Routes = [
 ];
 
 @NgModule({
-  imports: [RouterModule.forRoot(routes)],
+  imports: [RouterModule.forRoot(routes,{onSameUrlNavigation:'reload'})],
   exports: [RouterModule]
 })
 export class AppRoutingModule { }

@@ -66,7 +66,7 @@ export class FormationViewComponent implements OnInit {
       (data) => {
         this.formation = data
         console.log(data)
-        this.getUser(1)
+        this.getUser(this.formation.user_id)
       },
       (error) => {
         console.log(error)
@@ -88,6 +88,6 @@ export class FormationViewComponent implements OnInit {
     }
 
     detailLecon(leconUrl){
-      this.router.navigate(["/formation/lecon","leconUrl"])
+      this.router.navigate(["/formation/lecon",leconUrl])
     }
 }

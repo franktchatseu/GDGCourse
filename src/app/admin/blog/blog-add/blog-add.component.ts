@@ -29,9 +29,10 @@ export class BlogAddComponent implements OnInit {
   ) { }
 
   ngOnInit() {
-    this.initForm()
     this.user = this.authService.getUser()
     this.getAllCategories()
+    this.initForm()
+
   }
 
   initForm(){
@@ -49,6 +50,7 @@ export class BlogAddComponent implements OnInit {
     return this.blogForm.controls;
   }
   onSubmit(){
+    console.log("id de la categorie est    :"+this.form.category.value)
     this.isSubmitted = true
     this.isLoading = false
 

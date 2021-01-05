@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { CommentService } from 'src/app/services/comment.service';
 import { CourseService } from 'src/app/services/course.service';
+import { FormationService } from 'src/app/services/formation.service';
 
 @Component({
   selector: 'app-lecon-view',
@@ -16,7 +17,8 @@ export class LeconViewComponent implements OnInit {
   constructor(
     private courseService: CourseService,
     private route: ActivatedRoute,
-    private router: Router
+    private router: Router,
+    private leconService: FormationService
   ) { }
 
   ngOnInit() {
@@ -60,8 +62,8 @@ export class LeconViewComponent implements OnInit {
     ];
 
 
-    const lecon_url = this.route.snapshot.paramMap.get("lecon_url");
-    //this.getLecon(lecon_url)
+    const lecon_url = this.route.snapshot.paramMap.get("slug");
+    this.getLecon(lecon_url)
     //related course
     this.getRelatedCourse(1)
     //recuperatiion des commentaires pour cet article
@@ -70,7 +72,7 @@ export class LeconViewComponent implements OnInit {
   }
 
   getLecon(lecon_url){
-    this.courseService.findCourse(lecon_url).then(
+    this.leconService.findLecon(lecon_url).then(
       (data) => {
         this.course = data;
         console.log(this.course)
@@ -78,7 +80,7 @@ export class LeconViewComponent implements OnInit {
     ).catch(
       (error) => {
         console.log(error);
-        this.router.navigate(['/course-list'])
+        //this.router.navigate(['/course-list'])
       }
     )
   }
